@@ -1,0 +1,45 @@
+h1 {
+background-color: skyblue;
+font-family: Times;
+font-variant: small-caps;
+text-align:  center;
+padding: 5px;
+}
+
+body  {
+font-family: Times;
+}
+
+
+
+h3 {
+text-decoration: underline;
+background-color: darkgray;
+padding: 5px;
+}
+
+
+.destacado {
+	color: purple;
+}
+
+.destacado:first-letter {
+	font-weight: bold;
+	font-size: 40px;
+
+}
+
+b { color:green;}
+
+h1:after, h1:before{
+	content:  "***";
+}
+
+.table{
+	padding: 5px;
+}
+
+th, td {
+	margin: 5px;
+	padding: 5px;
+}
