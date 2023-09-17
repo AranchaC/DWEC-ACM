@@ -1,21 +1,23 @@
 h1 {
-background-color: skyblue;
-font-family: Times;
-font-variant: small-caps;
-text-align:  center;
-padding: 5px;
+	background-color: skyblue;
+	font-family: Times;
+	font-variant: small-caps;
+	text-align:  center;
+	padding: 5px;
 }
 
 body  {
-font-family: Times;
+	font-family: Times;
 }
 
+h3, legend {
+	text-decoration: underline;
+	background-color: darkgray;
+	padding: 5px;
+}
 
-
-h3 {
-text-decoration: underline;
-background-color: darkgray;
-padding: 5px;
+h3:hover{
+	background-color:dodgerblue;
 }
 
 
@@ -26,7 +28,6 @@ padding: 5px;
 .destacado:first-letter {
 	font-weight: bold;
 	font-size: 40px;
-
 }
 
 b { color:green;}
@@ -37,9 +38,21 @@ h1:after, h1:before{
 
 .table{
 	padding: 5px;
+	box-shadow: 5px 5px 5px;
 }
 
 th, td {
 	margin: 5px;
 	padding: 5px;
+}
+
+a{
+	border: black 2px solid;
+	margin: 5px;
+	padding: 5px;
+	border-radius: 10px;
+}
+
+a:hover{
+	background-color: pink;
 }

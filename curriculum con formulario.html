@@ -8,13 +8,12 @@
 
 	<body>
 
-		<nav>
+		<nav class="nav">
 			<a href="www.google.es">Google</a>
 			<a href="www.as.es">As</a>
 			<a href="www.marca.es">Marca</a>
 		</nav>
 
-		<a id="top"></a>
 		<h1 id="titular">CURRICULUM VITAE</h1>
 		<hr/> 
 
@@ -60,14 +59,18 @@
 
 		<footer>
 			<form action="#">
-				<label for="idNombre"> Nombre: </label>
-				<input type="password" name="password" placeholder="Nombre" /><br/>
-	
-				<label for="IdEmail">Email: </label>
-				<input type="email" name="email" placeholder="Correo electrónico" /><br/>
-
-				<input type="submit" value="Enviar" />
-				<input type="reset" value="Limpiar" />
+				<fieldset>
+					<legend>Datos de contacto: </legend>
+					<br/>
+					<label for="idNombre"> Nombre: </label>
+					<input type="password" name="password" placeholder="Nombre" /><br/>
+		
+					<label for="IdEmail">Email: </label>
+					<input type="email" name="email" placeholder="Correo electrónico" /><br/>
+					<br/>
+					<input type="submit" value="Enviar" />
+					<input type="reset" value="Limpiar" />
+				</fieldset>
 			</form>
 		</footer>
 		
