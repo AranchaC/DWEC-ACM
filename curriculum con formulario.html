@@ -63,7 +63,7 @@
 					<legend>Datos de contacto: </legend>
 					<br/>
 					<label for="idNombre"> Nombre: </label>
-					<input type="password" name="password" placeholder="Nombre" /><br/>
+					<input type="nombre" name="nombre" placeholder="Nombre" /><br/>
 		
 					<label for="IdEmail">Email: </label>
 					<input type="email" name="email" placeholder="Correo electrónico" /><br/>
@@ -85,6 +85,10 @@
 			setInterval(()=> suma=suma+1,1000)
 
 			console.log(a,suma)
+
+			console.time('loop');
+			for(let i=0; i<1000; i++) {console.log(i);}
+			console.timeEnd('loop');
 		</script>
 
 
