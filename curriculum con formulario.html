@@ -4,6 +4,8 @@
 		
 		<title>curriculum vitae arancha chicharro</title>
 		<link rel="stylesheet" href="estilos CV.css">
+		<script src="tucodigo.js" defer> </script>
+
 	</head>
 
 	<body>
@@ -57,7 +59,6 @@
 		
 		<br/><br/>
 
-		<footer>
 			<form action="#">
 				<fieldset>
 					<legend>Datos de contacto: </legend>
@@ -72,6 +73,9 @@
 					<input type="reset" value="Limpiar" />
 				</fieldset>
 			</form>
+			<br/><br/>
+
+			<input type="nombre" onclick="alert('Hola mundo: código JS en etiqueta HTML')" value="PULSA AQUÍ:">
 		</footer>
 		
 
@@ -89,6 +93,26 @@
 			console.time('loop');
 			for(let i=0; i<1000; i++) {console.log(i);}
 			console.timeEnd('loop');
+			
+			/* PRUEBA CÓDIGO EJ 12 */
+			console.group("Passengers: Heart of Gold");
+				console.log('Zaphod'); 
+				console.log('Zaphod'); 
+				console.log('TRillian'); 
+				console.log('Ford'); 
+				console.log('Arthur'); 
+				console.log('Marvin'); 
+
+				console.groupCollapsed("Hidden");
+					console.log('(Frankie & Benjy)');
+				console.groupEnd("Hidden");
+			console.groupEnd("Passengers: Heart of Gold");
+
+		</script>
+
+		<!-- prueba ej 15  -->
+		<script type="text/javascript">
+			console.log('Hola mundo: etiqueta script dentro del html')
 		</script>
 
 
