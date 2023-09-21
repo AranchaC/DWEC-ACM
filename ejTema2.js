@@ -83,3 +83,24 @@ function ej5(){
     let tabla = [ {'Entrada': entrada, 'Salida': sueldoTotal} ]
     console.table(tabla)
 }
+
+/* EJ 6 */
+function ej6(){
+    let nota = parseFloat(prompt("Dime tu calificación (con decimales)."))
+    let entrada = nota
+    let salida
+
+    if (nota < 3){
+        salida = `Muy deficiente`
+    } else if (nota == 3 || nota < 5) {
+        salida = `Insuficiente`
+    } else if (nota == 5 || nota < 6 ) {
+        salida = `Bien`
+    } else if (nota == 6 || nota < 9) {
+        salida = `Notable`
+    } else {
+        salida = `Sobresaliente`
+    }
+    let tabla = [ {'Entrada': nota, 'Salida': salida} ]
+    console.table(tabla)
+}
