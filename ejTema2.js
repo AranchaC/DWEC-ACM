@@ -80,7 +80,10 @@ function ej5(){
             sueldoTotal = sueldo
         }
     }
-    let tabla = [ {'Entrada': entrada, 'Salida': sueldoTotal} ]
+    let tabla = []
+    tabla = [entradasueldoTotal]
+
+    /*let tabla = [ {'Entrada': entrada, 'Salida': sueldoTotal} ]*/
     console.table(tabla)
 }
 
@@ -103,4 +106,47 @@ function ej6(){
     }
     let tabla = [ {'Entrada': nota, 'Salida': salida} ]
     console.table(tabla)
+}
+
+/* EJ 7 */
+function ej7(){
+
+}
+
+/* EJ 8 */
+function ej8(){
+    let N = parseInt(prompt("Dime un número."))
+    let i = 1
+    const tabla = []
+
+    while (i<=N){
+        if (i %2 != 0){
+          console.log(i)
+        }
+        i++
+    }
+    //tabla =push.[]
+    console.log(tabla)
+}
+
+/* EJ 11 */
+function ej11(){
+    let num = parseInt(prompt("Dime un número."))
+    for (let i=1; i<=num; i++ ){
+        let fila = ` `
+        for (let j=1; j<=i; j++){
+            fila=fila + `*`
+        }
+        console.log(fila)
+    }   
+}
+/* EJ 11 dos */
+function ej11dos(){
+    let num = parseInt(prompt("Dime un número."))
+    let i=0
+    let linea=``
+    while (i <= num){
+        console.log(linea+=`*`)
+        i++
+    }
 }
