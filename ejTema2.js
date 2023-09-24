@@ -7,10 +7,6 @@ function ej1() {
     let num2 = parseInt(prompt("Dime el número 2"))
     let num3 = parseInt(prompt("Dime el número 3"))
 
-    let suma =num1+num2+num3
-    let multi = num1*num2*num3
-    let divi = num1/num3
-
     console.log(`Tu nombre es ${nombre} ${apellido}
     Los números indicados son: ${num1}, ${num2} y ${num3}`) 
 }
@@ -19,7 +15,6 @@ function ej1() {
 function ej2() {
     let nombre = prompt("Dime tu nombre")
     let apellido = prompt("Dime tu apellido")
-
 
     let num1 = parseInt(prompt("Dime el número 1"))
     let num2 = parseInt(prompt("Dime el número 2"))
@@ -36,7 +31,6 @@ function ej2() {
     - la división del ${num1} entre el ${num3} es ${divi}
     `) 
 }
-
 
 /* EJ 3 */
 function ej3() {
@@ -65,23 +59,22 @@ function ej4() {
 
 /* EJ 5 */ 
 function ej5(){
-    let sueldo = parseInt(prompt("Dime tu sueldo"))
-    let anyos = parseInt(prompt("Dime tus años de antigüedad"))
-    let sueldoTotal
-    let entrada = sueldo + '\n' + anyos
+    const sueldo = parseInt(prompt("Dime tu sueldo"))
+    const anyos = parseInt(prompt("Dime tus años de antigüedad"))
+    let sueldoTotal = sueldo;
+    const tabla = [];
 
-    if (sueldo < 500 && anyos >= 10){
-        sueldoTotal = sueldo*3
-    }
-    else {
-        if (sueldo <500 && anyos <10){
-            sueldoTotal = sueldo*2
+    if (sueldo < 500 ){
+        if (anyos >=10){
+            sueldoTotal = sueldo*3
         } else {
-            sueldoTotal = sueldo
-        }
+            sueldoTotal = sueldo*2
+        }      
+    } else {
+        sueldoTotal = sueldo
     }
-    let tabla = []
-    tabla = [entradasueldoTotal]
+
+    tabla.push({Entrada:sueldo+"\n"+anyos, Salida: sueldoTotal})
 
     /*let tabla = [ {'Entrada': entrada, 'Salida': sueldoTotal} ]*/
     console.table(tabla)
@@ -110,23 +103,31 @@ function ej6(){
 
 /* EJ 7 */
 function ej7(){
-
+    let N = parseInt(prompt("Dime un número."))
+    let i = 2
+    if (N >= i){
+        for (let i=2; i <=N; i++){
+            console.log(i)
+        }
+    }
 }
 
 /* EJ 8 */
 function ej8(){
     let N = parseInt(prompt("Dime un número."))
     let i = 1
+    const impares = []
     const tabla = []
 
     while (i<=N){
         if (i %2 != 0){
           console.log(i)
+          impares.push(i)
         }
         i++
     }
-    //tabla =push.[]
-    console.log(tabla)
+    tabla.push({Entrada: N, Salida: impares.join("\n")})
+    console.table(tabla)
 }
 
 /* EJ 11 */
