@@ -3,13 +3,13 @@ const MAX = 100;
 let getRandomInt = (max) => Math.floor(Math.random() * max)
 const partidas = []
 
-while(true){
+while(true) {
     let aleat = getRandomInt(MAX)
-    console.log(aleat)
-    let num = parseInt(prompt("¡ VAMOS A JUGAR ! \n Adivina el número."))
+    //console.log(aleat)
+    let num = parseInt(prompt("¡ VAMOS A JUGAR ! \n Adivina un número entre 0 y 100."))
     let contador = 1
 
-    if (isNaN(num) === true){
+    if (isNaN(num) === true) {
         console.log("Has cancelado. \n SE ACABÓ EL JUEGO.")
         break;
     }
@@ -24,7 +24,7 @@ while(true){
         } else if (num > aleat){
             console.log(`Te pasaste, tu número ${num} es mayor. \n ¡Inténtalo de nuevo!`)
             contador++
-        } else{
+        } else {
             console.log(`No has llegado, tu número ${num} es menor. \n ¡Inténtalo de nuevo!`)
             contador++
         }
@@ -33,6 +33,12 @@ while(true){
     } //while true 2
     //console.log(partidas)
     console.table(partidas)
+    let pregunta = window.confirm("¿Volver a jugar?")
+    if (pregunta === true){
+        continue
+    } else {
+        console.log("Has cancelado. \n SE ACABÓ EL JUEGO.")
+    }
 }//while true 1
 
 
