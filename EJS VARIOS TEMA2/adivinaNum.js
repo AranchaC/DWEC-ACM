@@ -37,7 +37,7 @@ while(true) {
     if (pregunta === true){
         continue
     } else {
-        console.log("Has cancelado. \n SE ACABÓ EL JUEGO.")
+        console.log("oh! Qué lástima :( \n ¡ HASTA OTRA !")
     }
 }//while true 1
 
