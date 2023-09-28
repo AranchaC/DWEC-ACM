@@ -12,28 +12,29 @@ function pc(){
     return false
 }//funciónPc
 
+function ganador(jugador,maquina){
+    if (jugador == maquina) {
+        return "Empate.";
+    } 
+    else if ((jugador == "piedra") && (maquina == "tijera") || 
+        (jugador == "papel") && (maquina == "piedra") ||
+        (jugador == "tijera") && (maquina == "papel")) {
+        ganados++;
+        return "Gana Jugador."
+    }
+    else {
+        perdidos++;
+        return "Gana PC."
+    }
+}//funciónGanador
+
 do {
     let jugador = prompt("Escribe \"piedra\", \"papel\" o \"tijera\"");
     //GUARDAMOS UN NÚMERO ALEATORIO DE 1 AL 9
     let maquina = pc(); 
-
-    if ((jugador == maquina)) {
-        alert(`${jugador} - ${maquina} : Empate`);
-    } 
-    else if (
-        (jugador == "piedra") && (maquina == "tijera") || 
-        (jugador == "papel") && (maquina == "piedra") ||
-        ((jugador == "tijera") && (maquina == "papel")) 
-        ) {
-        alert(`${jugador} - ${maquina}: Gana Jugador`);
-        ganados++;
-    } 
-    else {
-        alert(jugador + "-" + maquina + ": Gana PC");
-        perdidos++;
-    }
-    jugados ++;
-
+    let resultado = ganador(jugador,maquina);
+    alert(`${jugador} - ${maquina}: ${resultado}`);
+    jugados++;
 } while (confirm("Jugar de nuevo"));
 
 console.log(`Partidas jugadors: ${jugados}
