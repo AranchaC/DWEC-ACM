@@ -59,3 +59,30 @@ function ej5(){
     console.log(diasRest())
     // let idTiempo = setInterval(diasRest, 2000)
 }
+
+// ej 4.1 //
+function ej6(){
+    let socios = []
+    do {
+        socios = prompt("Dime 10 nombres de socios (separados por comas").split(",")
+    } while (socios.length !== 4)
+    
+    console.log(`Socios:  ${socios}`)
+    console.log(`Número de socios: ${socios.length}`)
+    console.log(`Socios ordenados: ${socios.sort().join(" -- ")}`)
+    console.log(`Socios ordenados inversos: ${socios.reverse().join(" -- ")}`)
+    
+    function buscar(nombre){
+        return socios.includes(nombre)
+    }
+    console.log(`Está aran?:  ${buscar("aran")}`)
+
+    let borrarSocio = function(){
+        socios.pop()
+        console.log(socios)
+        if(socios.length === 0){
+            clearInterval
+        }
+    }
+
+}
