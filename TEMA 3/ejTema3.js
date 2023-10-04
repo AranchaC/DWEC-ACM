@@ -116,7 +116,8 @@ function ej7() {
     let alumnos = []
 
     while (alumnos.length !== size){
-        let nombre = prompt("Dime nombre y nota (separado por coma)")
+        let alumno = prompt("Dime nombre y nota (separado por coma)");
+        let [nombre,nota] = alumno.split(",")
         alumnos.push(`${nombre},${nota}`)
     }
 
@@ -126,12 +127,16 @@ function ej7() {
     let suma = 0
     alumnos.forEach(elemento => {
        let info=elemento.split(",")
-        suma+=info[1]
+        suma+=parseInt(info[1])
     })
     
     let media = suma / size
     console.log(`La media es ${media}`)
+}
 
-
-
+// ej 4.3 //
+function ej8() {
+    let nombres =[]
+    let edades = []
+    let persona = 
 }
