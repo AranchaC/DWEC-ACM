@@ -138,5 +138,56 @@ function ej7() {
 function ej8() {
     let nombres =[]
     let edades = []
-    let persona = 
+    let totalEdad = 0;
+
+    for (let i=0; i<3; i++) {
+        let nom = prompt("Dime un nombre");
+        let ed = parseInt(prompt(`Dime la edad de ${nom}`))
+        nombres.push(nom)
+        edades.push(ed)
+    }
+
+    nombres.forEach((elemento,posicion) => {
+        console.log(`${posicion}: Nombre ${elemento}, Edad ${edades[posicion]}`)
+    })
+
+    // media con reduce
+    totalEdad = 0;
+    totalEdad = edades.reduce((total, elemento) => total + elemento, 0); 
+    console.log(`Media con REDUCE:  ${totalEdad/edades.length}`);
+
+    // media con foreach
+    totalEdad = 0;
+    edades.forEach((elemento) => totalEdad+=elemento);
+    console.log(`Media con FOR EACH: ${totalEdad/edades.length}`);
+
+    // media for of
+    totalEdad =0;
+    for(let elemento of edades) totalEdad+=elemento;
+    console.log(`Media con FOR OF: ${totalEdad/edades.length}`);
+
+    // media for
+    totalEdad =0;
+    for(let i=0; i<edades.length; i++){totalEdad+=edades[i]};
+    console.log(`Media con FOR: ${totalEdad/edades.length}`);
+
+    //borrar por indice
+    let pos = parseInt(prompt("Dime la posición a borrar."));
+    nombres.splice(pos,1);
+    edades.splice(pos,1);
+    console.log(`Posición a borrar ${pos}. El listado actual es: ${nombres} y edad ${edades}`);
+
+    //borrar por nombre
+    
+
+    //mapas
+    /*
+    todo lo anterior con mapa:
+    insertar alumnos
+    mostrar info
+    media edad
+    si existe alumno
+    borrar por nombre(clave)
+    */
+
 }
