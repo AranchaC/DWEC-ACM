@@ -170,15 +170,22 @@ function ej8() {
     totalEdad =0;
     for(let i=0; i<edades.length; i++){totalEdad+=edades[i]};
     console.log(`Media con FOR: ${totalEdad/edades.length}`);
+}
+
+function ej9(){
 
     //borrar por indice
     let pos = parseInt(prompt("Dime la posición a borrar."));
     nombres.splice(pos,1);
     edades.splice(pos,1);
-    console.log(`Posición a borrar ${pos}. El listado actual es: ${nombres} y edad ${edades}`);
+    console.log(`Posición a borrar ${pos}. El listado actual es: ${nombres} y edades ${edades}`);
 
     //borrar por nombre
-    
+    let nombre = prompt("¿Qué alumno quieres borrar?");
+    nombres = nombres.filter(elemento => elemento !== nombre);
+    let edad = parseInt(prompt("Especifica la edad a borrar"))
+    edades = edades.filter(elemento => elemento !== edad);  
+    console.log(`Alumno a borrar ${alumno} . El listado de alumnos actual es : ${alumnos} y edades : ${edades}`);
 
     //mapas
     /*
@@ -190,4 +197,32 @@ function ej8() {
     borrar por nombre(clave)
     */
 
+}
+
+/* **** 4.5 MAPA *** */
+
+let alumnos = new Map();
+function insertar(){
+    let size = parseInt(prompt("¿Cuántos alumnos hay?"))
+    for (let i=0; i<size; i++) {
+        let nom = prompt("Dime un nombre");
+        let ed = parseInt(prompt(`Dime la edad de ${nom}`))
+        // let nota = parseInt(prompt(`Dime la nota de ${nom}`))
+        // alumnos.set(nom, {edad: ed, nota: nota});
+        alumnos.set(nom,ed);
+    }
+
+    console.log(alumnos)
+}
+
+function info(){
+    alumnos.forEach((ed,nom) => {
+        console.log(`El alumno ${nom} tiene ${ed} años`)
+    })
+}
+
+function media(){
+    totalEdad = 0;
+    edades.forEach((ed) => totalEdad+=ed);
+    console.log(`La media de edad es: ${totalEdad/alumnos.size}`);
 }
