@@ -199,30 +199,5 @@ function ej9(){
 
 }
 
-/* **** 4.5 MAPA *** */
 
-let alumnos = new Map();
-function insertar(){
-    let size = parseInt(prompt("¿Cuántos alumnos hay?"))
-    for (let i=0; i<size; i++) {
-        let nom = prompt("Dime un nombre");
-        let ed = parseInt(prompt(`Dime la edad de ${nom}`))
-        // let nota = parseInt(prompt(`Dime la nota de ${nom}`))
-        // alumnos.set(nom, {edad: ed, nota: nota});
-        alumnos.set(nom,ed);
-    }
-
-    console.log(alumnos)
-}
-
-function info(){
-    alumnos.forEach((ed,nom) => {
-        console.log(`El alumno ${nom} tiene ${ed} años`)
-    })
-}
-
-function media(){
-    totalEdad = 0;
-    edades.forEach((ed) => totalEdad+=ed);
-    console.log(`La media de edad es: ${totalEdad/alumnos.size}`);
-}
+/* *** 6. SET *** */
