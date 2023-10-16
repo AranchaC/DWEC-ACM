@@ -30,24 +30,37 @@ function media(){
 
 function buscar (){
     let nombre = prompt("¿Qué alumno quieres buscar (nombre)?");
-        if (alumnos.nombre == nombre){
-            console.log(`SI Existe el alumno ${alumno.nombre}`);
-        } else {
-            console.log(`NO Existe el alumno ${nombre}`);
-        }
-    ;
+    let encontrado = false;
 
-}
-
-function borrar (){
-    let nombre = prompt("¿Qué alumno quieres borrar (nombre)?");
-    if (alumnos.has(nombre)){
-        alumnos.delete(nombre);
-        console.log(`El alumno ${nombre} ha sido borrado`)
+    alumnos.forEach((alumno) => {
+        if (alumno.nombre === nombre){
+            encontrado = true;
+        } 
+    });
+    if (encontrado){
+        console.log(`SI Existe el alumno ${nombre}`);
     } else {
         console.log(`NO Existe el alumno ${nombre}`);
     }
-}
+
+}//buscar
+
+function borrar (){
+    let nombre = prompt("¿Qué alumno quieres borrar (nombre)?");
+    let alumnoEliminar = null;
+
+    alumnos.forEach((alumno) => {
+        if (alumno.nombre === nombre){
+            alumnoEliminar = alumno;
+        }
+    });
+    if (alumnoEliminar){
+            alumnos.delete(alumnoEliminar);
+            console.log(`El alumno ${nombre} ha sido borrado`)
+        } else {
+            console.log(`NO Existe el alumno ${nombre}`);
+        }
+}//borrar
 
 function borrarTodo (){
     alumnos.clear();
