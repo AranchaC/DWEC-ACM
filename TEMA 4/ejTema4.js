@@ -56,8 +56,8 @@ let prod2 = new Productos("Lenovo 123", "Portátiles", 3, 455.6);
 let prod3 = new Productos("IPhone 13", "Móviles", 5, 555);
 
 class Televisores extends Productos {
-    constructor (nombre, categoria, unidades, precio, tamanio){
-        super (nombre, categoria, unidades, precio);
+    constructor (nombre, unidades, precio, tamanio){
+        super (nombre, "Televisores", unidades, precio);
         this._tamanio = tamanio;
     }
 
@@ -65,11 +65,11 @@ class Televisores extends Productos {
     set tamanio(valor){this._tamanio = valor;}
 
     getInfo(){
-        console.log(`${super._nombre} tiene ${this._tamanio} de tamaño`);
+        console.log(`${super.nombre} tiene ${this._tamanio} de tamaño`);
     }
 
     toString(){
-        return String(`De la TV ${super._nombre} hay ${super._unidades}uds.`);
+        return String(`De la TV ${super.nombre} hay ${super._unidades}uds.`);
     }
 
     valueOf(){
@@ -81,23 +81,34 @@ class Televisores extends Productos {
     }
 }
 
-let prod4 = new Productos("TV LG 52", "Televisores", 7, 125);
-let prod5 = new Productos("TV Samnsung 32 4k", "Televisores", 2, 400);
+let prod4 = new Televisores("TV LG 52", 7, 125,52);
+let prod5 = new Televisores("TV Samnsung 32 4k", 2, 400, 32);
 
 let todos = [prod1,prod2,prod3,prod4, prod5];
 
-Productos.prototype.prodOdenPorNombre() = function(){
-    return this.sort((a,b) => a.nombre.localeCompare(b.nombre))
+prodOrdenPorNombre = function (array) {
+    return array.sort((a, b) => a.nombre.localeCompare(b.nombre))
 }
 
-Productos.prototype.pordOrdenPorPrecio() = function(){
-    return this.sort((a,b) => a.precio.compareNumbers(b.precio))
+prodOrdenPorPrecio = function (array) {
+    return array.sort((a, b) => a.precio - b.precio)
 }
 
-Productos.prototype.prodPrecioTotal() = function(){
-    total=0;
-    this.forEach((producto => total+= producto._precio));
-    return total;
+prodPrecioTotal = function (array) {
+    total = 0;
+    array.forEach((a) => total += a._precio);
+    return total.toFixed(2);
 }
 
+prodConMenosUnidades = function (array, num) {
+    return array.filter(a => a._unidades < num );
+}
 
+prodLista = function (array) {
+    let cadena = 'Listado de productos: \n';
+    array.forEach((a) => {
+        cadena += a.getInfo();
+    })
+        return cadena;
+    
+}
