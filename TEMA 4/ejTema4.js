@@ -65,7 +65,7 @@ class Televisores extends Productos {
     set tamanio(valor){this._tamanio = valor;}
 
     getInfo(){
-        console.log(`${super.nombre} tiene ${this._tamanio} de tamaño`);
+        return (`${super.nombre} tiene ${this._tamanio} de tamaño`);
     }
 
     toString(){
@@ -84,7 +84,7 @@ class Televisores extends Productos {
 let prod4 = new Televisores("TV LG 52", 7, 125,52);
 let prod5 = new Televisores("TV Samnsung 32 4k", 2, 400, 32);
 
-let todos = [prod1,prod2,prod3,prod4, prod5];
+let todos = [prod1, prod2, prod3, prod4, prod5];
 
 prodOrdenPorNombre = function (array) {
     return array.sort((a, b) => a.nombre.localeCompare(b.nombre))
@@ -107,7 +107,7 @@ prodConMenosUnidades = function (array, num) {
 prodLista = function (array) {
     let cadena = 'Listado de productos: \n';
     array.forEach((a) => {
-        cadena += a.getInfo();
+        cadena += `- ${a.getInfo()}\n`;
     })
         return cadena;
     
