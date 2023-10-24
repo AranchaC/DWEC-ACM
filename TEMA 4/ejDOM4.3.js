@@ -7,6 +7,6 @@ function insertarCheckbox(){
 
     check.setAttribute("value",value)
 
-    let padre = document.getElementById("body");
+    let padre = document.getElementById("form");
     padre.appendChild(check)
 }
