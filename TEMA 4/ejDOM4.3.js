@@ -1,12 +1,16 @@
 function insertarCheckbox(){
+    let cantidad = parseInt(document.getElementById('contenido').value)
+    let padre = document.getElementById("contenedor");
+    
+    for (let i=1; i<= cantidad; i++){
+        let check = document.createElement("input")
+        check.setAttribute("type","checkbox")
 
-    let check = document.createElement("input")
-    check.setAttribute("type",checkbox)
+        let value = Math.random()
+        check.setAttribute("value",value)
 
-    let value = Math.random()
+        padre.appendChild(check)
+        
+    }
 
-    check.setAttribute("value",value)
-
-    let padre = document.getElementById("form");
-    padre.appendChild(check)
 }
