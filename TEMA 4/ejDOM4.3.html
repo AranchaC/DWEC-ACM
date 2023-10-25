@@ -3,14 +3,16 @@
     <head>
         <meta charset="utf-8" />
         <title>DOM 4.3</title>
-        <script src="ejDOM4.3.js"></script>               
+        <script src="ejDOM4.3.js" defer></script>               
     </head>
     <body>
         <form id="form">
             <label>Número de checkbox</label>
             <input type="text" id="contenido" value=""/>
-            <button onclick="insertarCheckbox()">Crear checkbox</button>
-            <div id="contenedor"></div>
+            <input type="button" id="idEnviar" value="Crear checkbox"></input>
+            <div id="contenedor">
+                <!-- aquí se añaden los checkbox -->
+            </div>
         </form>
     </body>
 </html>
