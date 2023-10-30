@@ -5,15 +5,15 @@ boton.addEventListener("click",insertarProductoEnLista);
 
 
 function insertarProductoEnLista(){  
-    //variable del contenido que quiero obtener
+    //variable del contenido que quiero obtener:
     let producto = document.getElementById('idProducto').value;
 
-    //añado elemento a la lista
+    //añado elemento a la lista (array):
     lista.push(producto);
 
     //ordeno
     lista.sort();
-    console.log(lista);
+
     borrarLista();
     insertarLista();
 
@@ -22,16 +22,17 @@ function insertarProductoEnLista(){
 function borrarLista(){
     //recuperar lista y borar
     let padreUl = document.getElementById("idUl");
-    //recupero hijos para borrarlos
+    //y mientras el padre tenga hijo, lo borro 1 a 1:
     while (padreUl.firstChild){
     padreUl.removeChild(padreUl.firstChild);
     }
 }
 
 function insertarLista(){
-    //ahora tengo un array con li's
     //variable del padre
     let padreUl = document.getElementById("idUl");
+    //recorro el array y por cada elemento, creo li con cada producto y 
+    //lo inserto al padre (ul):
     lista.forEach(producto => {
         //variable que quiero crear
         let li = document.createElement("li");
