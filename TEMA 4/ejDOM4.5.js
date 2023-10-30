@@ -2,8 +2,7 @@ let boton = document.getElementById("idAñadir");
 let lista = [];
 
 boton.addEventListener("click",insertarProductoEnLista);
-boton.addEventListener("click",borrarLista);
-boton.addEventListener("click",insertarLista);
+
 
 function insertarProductoEnLista(){
     //variable que quiero crear
@@ -14,23 +13,34 @@ function insertarProductoEnLista(){
     li.innerHTML = producto;
 
     //añado elemento a la lista
-    lista.push(li);
+    lista.push(producto);
 
-    
+    //ordeno
+    lista.sort();
+    console.log(lista);
+    borrarLista();
+    insertarLista();
+
     //variable del padre
     let padreUl = document.getElementById("idUl");
-  
     //se lo añado al padre
     padreUl.appendChild(li);
-
-    
+ 
 }
 
 function borrarLista(){
-
+    //recuperar lista y borar
+    let padreUl = document.getElementById("idUl");
+    while (padreUl.children > 0){
+        padreUl.removeChild(padreUl.firstChild[0]);
+    }
 }
 
 function insertarLista(){
-    //ahora tengo un array con lis
+    //ahora tengo un array con li's
+
 
 }
+///pongo elemento, lo almaceno en el array:
+// con foreach,
+//push y sort
