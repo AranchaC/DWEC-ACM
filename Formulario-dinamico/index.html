@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Aficiones</title>
+    <link rel="stylesheet" type="text/css" href="./css/estilos.css">
+    <script src="./js/javascript.js" defer></script>
+</head>
+<body>
+    <form id="idForm">
+        <h2>Formulario de Aficiones</h2>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <div id="idSexo">Sexo:<br></div>
+
+        <!-- <input type="radio" id="masculino" name="sexo" value="masculino">
+        <label for="masculino">Masculino</label>
+        <input type="radio" id="femenino" name="sexo" value="femenino">
+        <label for="femenino">Femenino</label>
+        <input type="radio" id="otro" name="sexo" value="otro">
+        <label for="otro">Otro</label> -->
+<br>
+        <label id="idEmail" for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email">
+
+        <label for="aficion">Afición Favorita:</label>  
+
+        <select id="aficion" name="aficion">
+        <!-- <option value="deportes">Practicas deportes</option>
+            <option value="musica">Escuchar música</option>
+            <option value="lectura">Leer libros</option>
+            <option value="viajes">Viajes</option>
+            <option value="otra">Otra Afición</option>  -->
+        </select>
+        <br>
+        <label id="pelicula" for="pelicula-preferida">Película Preferida:</label>
+        <!-- <input type="text" id="pelicula-preferida" name="pelicula-preferida" list="peliculas">
+
+        <datalist id="peliculas">
+            <option value="Titanic">
+                <option value="Forrest Gump">
+                <option value="Avatar">
+                <option value="The Shawshank Redemption">
+                <option value="The Godfather">
+                <option value="Inception">
+                <option value="Pulp Fiction">
+                <option value="The Dark Knight">
+                <option value="Schindler's List">
+                <option value="The Matrix">
+        </datalist> -->
+
+        <label id="serie" for="serie-preferida">Serie Preferida:</label>
+        <!-- <input type="text" id="serie-preferida" name="serie-preferida" list="series">
+
+        <datalist id="series">
+            <option value="Juego de Tronos">
+            <option value="Breaking Bad">
+            <option value="Stranger Things">
+            <option value="Friends">
+            <option value="The Crown">
+            <option value="Los Serrano">
+        </datalist> -->
+
+        <label for="comentarios">Comentarios:</label>
+        <textarea id="comentarios" name "comentarios" rows="4"></textarea>
+
+        <input type="submit" value="Enviar">
+        <input type="reset" value="Limpiar">
+    </form>
+</body>
+</html>
