@@ -109,8 +109,8 @@ function comprobarGanador(){
 				`${puntos_j1} puntos`,
 				'success'
 			  )
-			ganador=document.getElementById("idNombreJ1").value
-			perdedor=document.getElementById("idNombreJ2").value	
+			ganador=document.getElementById("idInputNombreJ1").value
+			perdedor=document.getElementById("idInputNombreJ2").value	
 							;
 		} else if (puntos_j1 < puntos_j2) {				
 			Swal.fire(
@@ -118,8 +118,8 @@ function comprobarGanador(){
 				`${puntos_j2} puntos`,
 				'success'
 			  )
-			ganador=document.getElementById("idNombreJ1").value
-			perdedor=document.getElementById("idNombreJ2").value
+			ganador=document.getElementById("idInputNombreJ2").value
+			perdedor=document.getElementById("idInputNombreJ1").value
 			
 		} else{
 			
@@ -175,34 +175,61 @@ let jugadores = new Set();
 let jugadoresLista = document.getElementById("idNombreJugadores");
 let cadena = "";
 function gestionJugadores(){
-
+	let cadena = "";
 	jugadores.add(nombre_j1);
 	jugadores.add(nombre_j2);
 
 	jugadores.forEach((elemento) => {
 		cadena += `${elemento}, `;
 	})
-	jugadoresLista.innerHTML = cadena;
-	
+	jugadoresLista.innerHTML = cadena;	
 }
-
-
-
-
 
 /********************************************************
 *  APARTADO 4 : Gestión de resultados
-	-> Crear un array llamado resultados con información de todas las partidas. cada elemento del array debe tener la estructura:
-	puntuacion,ganador,jugador 
+	-> Crear un array llamado resultados con información de todas las partidas. 
+	cada elemento del array debe tener la estructura: 	puntuacion,ganador,jugador 
 	Por ejemplo:
 	14-5,Agustin,Alumno1
 
-	Al finalizar cada partida debes insertar la información correspondiente en el área de resultados. 
+	Al finalizar cada partida debes insertar la información correspondiente en el área 
+	de resultados. 
     	• Debes crear los elementos tr y td utilizando funciones del DOM. 
     	• Cada nueva fila debe tener la clase “mostrar”
     	• Al hacer click sobre una fila, debes eliminar la fila de a tabla
 *******************************************************/
- 
+
+let resultados = [];
+let objInfo = {
+	"puntuacion": `${puntos_j1}-${puntos_j2}`,
+	"ganador": `${ganador}`,
+	"jugador": `${perdedor}`
+}
+resultados.push(objInfo);
+
+function gestionPuntuacion() {
+	let conten = document.getElementById("idEstadisticas");
+	resultados.forEach(objInfo => {
+
+		let fila = document.createElement('tr');
+		fila.setAttribute('class','mostrar');
+		let columPunt = document.createElement('td');
+		let columGan = document.createElement('td');
+		let columPer= document.createElement('td');
+		
+		//añado contenido
+		columPunt.innerHTML=objInfo.puntuacion;
+		columGan.innerHTML=objInfo.ganador;
+		columPer.innerHTML=objInfo.jugador;
+
+		fila.appendChild(columPunt);
+		fila.appendChild(columGan);
+		fila.appendChild(columPer);
+
+		conten.appendChild(fila);	
+	}); 
+}
+
 
 /*************************************************************
  ***********************************************************
