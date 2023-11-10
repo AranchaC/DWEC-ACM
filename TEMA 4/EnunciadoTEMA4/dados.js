@@ -199,35 +199,44 @@ function gestionJugadores(){
     	• Al hacer click sobre una fila, debes eliminar la fila de a tabla
 *******************************************************/
 
-let resultados = [];
-let objInfo = {
-	"puntuacion": `${puntos_j1}-${puntos_j2}`,
-	"ganador": `${ganador}`,
-	"jugador": `${perdedor}`
+function eliminarFila(event){
+	if(confirm("Desea eliminar la fila"))
+	this.remove();
 }
-resultados.push(objInfo);
+let resultados = [];
 
+//cada vez que se acaba partida:
 function gestionPuntuacion() {
+	//creo obj json y lo pongo en el array:
+	let objInfo = {
+		"puntuacion": `${puntos_j1}-${puntos_j2}`,
+		"ganador": `${ganador}`,
+		"perdedor": `${perdedor}`
+	}
+	resultados.push(objInfo);
+	//console.log(resultados);
+
 	let conten = document.getElementById("idEstadisticas");
-	resultados.forEach(objInfo => {
 
-		let fila = document.createElement('tr');
-		fila.setAttribute('class','mostrar');
-		let columPunt = document.createElement('td');
-		let columGan = document.createElement('td');
-		let columPer= document.createElement('td');
-		
-		//añado contenido
-		columPunt.innerHTML=objInfo.puntuacion;
-		columGan.innerHTML=objInfo.ganador;
-		columPer.innerHTML=objInfo.jugador;
+	let fila = document.createElement('tr');
+	fila.setAttribute('class','mostrar');
+	let columPunt = document.createElement('td');
+	let columGan = document.createElement('td');
+	let columPer= document.createElement('td');
+	
+	//añado contenido
+	columPunt.innerHTML=objInfo.puntuacion;
+	columGan.innerHTML=objInfo.ganador;
+	columPer.innerHTML=objInfo.perdedor;
 
-		fila.appendChild(columPunt);
-		fila.appendChild(columGan);
-		fila.appendChild(columPer);
+	fila.appendChild(columPunt);
+	fila.appendChild(columGan);
+	fila.appendChild(columPer);
 
-		conten.appendChild(fila);	
-	}); 
+	fila.addEventListener("dblclick",eliminarFila)
+
+	conten.appendChild(fila);	
+
 }
 
 
