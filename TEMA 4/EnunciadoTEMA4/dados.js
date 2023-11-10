@@ -199,7 +199,7 @@ function gestionJugadores(){
     	• Al hacer click sobre una fila, debes eliminar la fila de a tabla
 *******************************************************/
 
-function eliminarFila(event){
+function eliminarFila(){
 	if(confirm("Desea eliminar la fila"))
 	this.remove();
 }
