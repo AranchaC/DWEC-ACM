@@ -9,6 +9,14 @@ boton.addEventListener ("click", validarInformacion);
 function validarInformacion(e){
   if (validarAPIHTML(e) && validarJS(e) ){
     // && confirm("¿Quieres enviar formulario?")
+
+    //recupero todos los span con clase error:
+    let span = document.querySelectorAll(".error");
+    //con un foreach borro todos los elementos del array span
+    span.forEach(element => {
+      element.remove();      
+    });
+    
     return true;
 
   } else {
@@ -24,7 +32,7 @@ function validarAPIHTML(e) {
 }
 
 function validarJS (e) {
-  return validarNombre() && validarEdad();
+  return validarNombre() && validarEdad() && validarArea() && validarGenero();
 }
 
 function validarNombre(){
@@ -55,6 +63,26 @@ function validarEdad(){
   else {
     return true;
   }
+}
+
+function validarArea(){
+  let zonaError = document.getElementById("errorArea");
+  let area = document.getElementById("area").value;
+  if (!area) {
+    zonaError.innerHTML="Campo obligatorio.";
+    return false;
+  } else if (area.length >= 50) {
+    zonaError.innerHTML="Tiene que tener menos de 50 carácteres";
+    return false;
+  } else {
+    return true;
+  }
+}
+
+function validarGenero(){
+  let generos = new Set;
+  
+
 }
 
 
