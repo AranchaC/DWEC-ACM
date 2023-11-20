@@ -5,9 +5,11 @@ var color_css = 'background: #222; color: #bada55'
 let boton =  document.getElementById("idEnviar")
 boton.addEventListener ("click", validarInformacion);
 
+let formulario = document.getElementById("idFormulario");
+
 //  validar: apihtlm, js, confirm
 function validarInformacion(e){
-  if (validarAPIHTML(e) && validarJS(e) ){
+  if (validarAPIHTML(e) ){
     // && confirm("¿Quieres enviar formulario?")
 
     //recupero todos los span con clase error:
@@ -28,11 +30,26 @@ function validarInformacion(e){
 
 function validarAPIHTML(e) {
   // console.log("Pendiente de implementar");
-  return true
+  return validarNombreHTML();
+}
+
+function validarNombreHTML (e){
+  let nombre = document.getElementById('nombre');
+
+  if (nombre.validity.valueMissing) {
+    let error = "Campo obligatorio";
+    nombre.focus();
+    nombre.setCustomValidity(error);
+    document.getElementById(errorNombre).innerHTML = nombre.validatonMessage;
+    return false; 
+  }
+
+
+  return true;
 }
 
 function validarJS (e) {
-  return validarNombre() && validarEdad() && validarArea() && validarGenero();
+  return validarNombre() && validarEdad() && validarArea() ;
 }
 
 function validarNombre(){
