@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <script type="text/javascript" src="javascript.js" defer> </script> 
+    <title>Formulario de Contacto</title>
+</head>
+<body>
+    
+    <h1 id="idTitulo">¡Bienvenido al Formulario de Contacto!</h1>
+
+    <form id="miFormulario" action="#" method="post">     
+
+        <label for="idNombre">Nombre:</label>
+        <input type="text" name="nombre" id="idNombre"   />
+        <span id="idNombreError" class="errorSpam"></span>
+
+        <label for="idApellidos">Apellidos:</label>
+        <input type="text" name="apellidos" id="idApellidos"   />
+        <span id="idApellidosError" class="errorSpam"></span>
+
+        <label for="idEdad">Edad:</label>
+        <input type="number" name="edad" id="idEdad"  />
+        <span id="idEdadError" class="errorSpam"></span>
+
+        <label for="idEmail">Correo Electrónico</label>
+        <input type="email" name="email" id="idEmail" />
+        <span id="idCorreoError" class="errorSpam"></span>
+
+        <label for="idFechaNacimiento">Fecha de Nacimiento:</label>
+        <input type="date" name="fechaNacimiento" id="idFechaNacimiento" />
+        <span id="idFechaNacimiento" class="errorSpam"></span>
+
+        <label for="idPais">País:</label>
+        <select name="pais" id="idPais" >
+            <option value="" disabled selected>Selecciona tu país</option>
+            <option value="espana">España</option>
+            <option value="mexico">México</option>
+            <option value="argentina">Argentina</option>
+            <option value="otro">Otro</option>            
+        </select>
+        <span id="idPaisError" class="errorSpam"></span>
+
+        <label for="idIntereses">Intereses:</label>
+        <ul>
+            <li><input type="checkbox" name="interes" value="deportes"> Deportes</li>
+            <li><input type="checkbox" name="interes" value="musica"> Música</li>
+            <li><input type="checkbox" name="interes" value="viajes"> Viajes</li>
+            <li><input type="checkbox" name="interes" value="y-mas"> Y mas</li>            
+        </ul>
+        <span id="idInteresesError" class="errorSpam"></span>
+
+        <label>Preferencias de contacto:</label>
+        <input type="radio" name="contacto" value="email" id="idEmail" >
+        <label for="idRadio">Correo Electrónico</label>
+
+        <input type="radio" name="contacto" value="telefono" id="idTelefono" >
+        <label for="idTelefono">Teléfono</label>
+
+        <input type="radio" name="contacto" value="ninguno" id="idNinguno" >
+        <label for="idNinguno">Ninguno</label>
+        <span id="idContactoError" class="errorSpam"></span>
+
+        <label for="idObservaciones">Observaciones:</label>
+        <textarea name="observaciones" id="idObservaciones" rows="4" cols="50"></textarea>
+
+        
+
+        <input type="submit" name="enviar" value="Enviar" id="idEnviar">
+    </form>
+
+</body>
+</html>
