@@ -52,7 +52,7 @@ function validarJS(eventopordefecto) {
 /************************FUNCIONES INDIVIDUALES*****************************/
 /***************************************************************************/
 function validarCorreo() {
-    let inputCorreo=formulario.elements["email"]
+    let inputCorreo=formulario["idEmail"]
     let spanCorreo=document.getElementById('idCorreoError')    
     
     if(inputCorreo.value == ""){
@@ -69,20 +69,26 @@ function validarCorreo() {
 }
   
 function validarInteres(){
+    let spanInteres=document.getElementById('idInteresesError')  
     let checkIntereses = formulario.querySelectorAll('input[name="interes"]');
     let interes = new Set();
 
+    interes.add('musica');
+    interes.add('viajes');
+    interes.add('deportes');
+
     checkIntereses.forEach(checkbox => {
-        interes.add(checkbox.value);
-        if (checkbox.checked){
-            marcado = true;
+        console.log(checkbox.value)
+
+        if (!interes.has(checkbox.value)){
+            //Añadir la clase error al elemento
+            checkbox.classList.add("error");
+            checkbox.focus();
+            spanInteres.innerHTML =`Este elemento no está permitido`
+            return false;
         }
     });
-
-
-
-    
-
+    return true;   
 }
 
 /********************************************************************************************
