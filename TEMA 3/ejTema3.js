@@ -31,7 +31,7 @@ function ej3(){
         console.log(fechaForm)
         document.title=fechaForm
     }
-    let idTiempo = setInterval(mostrarHora, 5000)
+    setInterval(mostrarHora, 3000)
 }
 
 // ej 2.4 //
@@ -41,7 +41,7 @@ function ej4(){
         console.log(fechaActual)
     }
 
-    let idTiempo = setInterval(mostrarFecha, 2000)
+    setInterval(mostrarFecha, 2000)
 }
 
 
@@ -53,10 +53,10 @@ function ej5(){
     let diasRest = () => {
         let resta = fechaFinal - fechaActual
         let diasRest = Math.floor(resta / (1000 * 60 * 60 * 24))
-        console.log(diasRest)
+        return diasRest
 
     }
-    console.log(diasRest())
+    console.log(`Quedan: ${diasRest()} para fin de curso.`)
     // let idTiempo = setInterval(diasRest, 2000)
 }
 
