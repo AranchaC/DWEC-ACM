@@ -13,9 +13,6 @@ let infoPartida=null;
 let ganador=null;
 let perdedor=null;
 
-
-
-
 function iniciar(){
 
 	if(validarInformacionInicial()==false){		
@@ -110,8 +107,8 @@ function comprobarGanador(){
 				'success'
 			  )
 			ganador=document.getElementById("idInputNombreJ1").value
-			perdedor=document.getElementById("idInputNombreJ2").value	
-							;
+			perdedor=document.getElementById("idInputNombreJ2").value
+
 		} else if (puntos_j1 < puntos_j2) {				
 			Swal.fire(
 				`Partida Finalizada, ¡¡¡ Vencedor ${nombre_j2} !!!`,
@@ -196,15 +193,15 @@ function gestionJugadores(){
 	de resultados. 
     	• Debes crear los elementos tr y td utilizando funciones del DOM. 
     	• Cada nueva fila debe tener la clase “mostrar”
-    	• Al hacer click sobre una fila, debes eliminar la fila de a tabla
+    	• Al hacer click sobre una fila, debes eliminar la fila de la tabla
 *******************************************************/
 
 function eliminarFila(){
 	if(confirm("Desea eliminar la fila"))
 	this.remove();
 }
-let resultados = [];
 
+let resultados = [];
 //cada vez que se acaba partida:
 function gestionPuntuacion() {
 	//creo obj json y lo pongo en el array:
@@ -216,29 +213,33 @@ function gestionPuntuacion() {
 	resultados.push(objInfo);
 	//console.log(resultados);
 
+	// capturo elemento contenedor:
 	let conten = document.getElementById("idEstadisticas");
 
+	// creo elementos: 1 fila y 3 columnas.
 	let fila = document.createElement('tr');
-	fila.setAttribute('class','mostrar');
+		// añado atributo clase a la fila:
+		fila.setAttribute('class','mostrar');
 	let columPunt = document.createElement('td');
 	let columGan = document.createElement('td');
 	let columPer= document.createElement('td');
 	
-	//añado contenido
+	// añado contenido a cada elemento:
 	columPunt.innerHTML=objInfo.puntuacion;
 	columGan.innerHTML=objInfo.ganador;
 	columPer.innerHTML=objInfo.perdedor;
 
+	// añado la fila a su contenedor (conten):
+	conten.appendChild(fila);	
+	
+	// añado las columnas a su contendor (fila):
 	fila.appendChild(columPunt);
 	fila.appendChild(columGan);
 	fila.appendChild(columPer);
 
-	fila.addEventListener("dblclick",eliminarFila)
-
-	conten.appendChild(fila);	
-
+	// añado evento a la fila:
+	fila.addEventListener("dblclick", eliminarFila)
 }
-
 
 /*************************************************************
  ***********************************************************
