@@ -14,7 +14,7 @@
     <form id="miFormulario" action="#" method="post">     
 
         <label for="idNombre">Nombre:</label>
-        <input type="text" name="nombre" id="idNombre"   />
+        <input type="text" name="nombre" id="idNombre" required />
         <span id="idNombreError" class="errorSpam"></span>
 
         <label for="idApellidos">Apellidos:</label>
@@ -22,12 +22,12 @@
         <span id="idApellidosError" class="errorSpam"></span>
 
         <label for="idEdad">Edad:</label>
-        <input type="number" name="edad" id="idEdad"  />
+        <input type="number" name="edad" id="idEdad" required min="18" max="99"/>
         <span id="idEdadError" class="errorSpam"></span>
 
         <label for="idEmail">Correo Electrónico</label>
         <input type="email" name="email" id="idEmail" />
-        <span id="idCorreoError" class="errorSpam"></span>
+        <span id="idEmailError" class="errorSpam"></span>
 
         <label for="idFechaNacimiento">Fecha de Nacimiento:</label>
         <input type="date" name="fechaNacimiento" id="idFechaNacimiento" />
