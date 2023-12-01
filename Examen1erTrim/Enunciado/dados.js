@@ -272,6 +272,14 @@ function gestionDados(){
 *******************************************************/
 
 //creo función borrar fila:
+
+/*
+en VM menú, dispositivos, instlar cd...
+sudo mont /dev/sr0 /mnt
+	sudo apt update
+	sudo apt install build-essential
+
+*/
 function eliminarFila(){
 	return this.remove();
 }
