@@ -27,21 +27,55 @@ const datosMultimediaArray = [
     }
   ];
   
-datosMultimediaArray.forEach(obJson => {
-  for(clave in obJson){
-    clave = clave.toLowerCase();
-    //por cada clave de cada json creamos un input y datalist:
-    let input= document.createElement('input');
-    input.type="text";
-    input.name=clave + "-preferida";
-    input.id=clave + "-preferida";
 
-    let padre = document.getElementById("pelicula");
+  const contenedor=document.getElementById("idZonaPreferida")
 
-    padre.appendChild(input);
+  datosMultimediaArray.forEach(objJSON =>{
+    for (clave in objJSON){
+      //clave=clave.toLowerCase()
+      let etiqueta = document.createElement("label")
+      etiqueta.setAttribute("for",clave +"-preferida")
+      etiqueta.innerHTML=clave+" Preferida"
 
-  }
-})
+      let input = document.createElement("input")
+      input.setAttribute("type","text")
+      input.setAttribute("id",clave+"-preferida")
+      input.setAttribute("name",clave+"-preferida")
+      input.setAttribute("list",clave)
+      
+      contenedor.appendChild(etiqueta)
+      contenedor.appendChild(input)
+
+      // DATALIST
+      const datalist = document.createElement("datalist");
+      datalist.id = clave; 
+      
+      objJSON[clave].forEach((opcion) => {
+          const option = document.createElement("option");
+          option.value = opcion;
+          datalist.appendChild(option);
+      });
+
+      contenedor.appendChild(datalist)
+
+    } 
+  })
+
+// datosMultimediaArray.forEach(obJson => {
+//   for(clave in obJson){
+//     clave = clave.toLowerCase();
+//     //por cada clave de cada json creamos un input y datalist:
+//     let input= document.createElement('input');
+//     input.type="text";
+//     input.name=clave + "-preferida";
+//     input.id=clave + "-preferida";
+
+//     let padre = document.getElementById("pelicula");
+
+//     padre.appendChild(input);
+
+//   }
+// })
 
 
   //SEXO
@@ -85,7 +119,6 @@ aficionesMap.forEach((val, key) =>{
 
   let contenOptions =document.getElementById("aficion");
   contenOptions.appendChild(option);
-
 });
 
   console.log("Los datos multimedia son :")
