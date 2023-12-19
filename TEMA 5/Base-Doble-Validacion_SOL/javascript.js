@@ -3,8 +3,6 @@
 // que se encargará de validar el formulario.
 document.getElementById("idEnviar").addEventListener('click', validar, false);
 let formulario=document.forms["idFormulario"]
-//es igual que:
-// let formulario = document.getElementById("idFormulario")
 
 /****************************************************************
  * FUNCIÓN GENERAL DE VALIDACIÓN
@@ -16,20 +14,21 @@ let formulario=document.forms["idFormulario"]
 function validar(e){    
     // IMPORTANTE!!! Realizar limpieza del formulario, a nivel de ClassName y CustomMessage
     for (let i=0; i<formulario.elements.length; i++){
-        formulario.elements[i].className="";
+        formulario.elements[i].classList.remove("errorInput")
         formulario.elements[i].setCustomValidity("")
     }
 
-    // IMPORTANTE!!! Realizar limpieza del formulario, a nivel de Spam de error        
+    // IMPORTANTE!!! Realizar limpieza del formulario, a nivel de Span de error        
     document.querySelectorAll(".errorSpan").forEach(e=>e.innerHTML="");
         
     // IMPORTANTE!!! Deshabilitamos el botón
     this.disabled = true;
 
-    if(validarJS(e) && confirm("¿Deseas enviar el formulario?")){           
+
+    if(validarAPIHTML(e) && validarJS(e) && confirm("¿Deseas enviar el formulario?")){           
         return true;
 
-    } else{
+    }else{
         e.preventDefault();
         this.disabled = false;
         return false;
@@ -42,37 +41,40 @@ function validar(e){
  *************** FUNCIÓN PARA VALIDAR DE FORMA MANUAL MEDIANTE JAVASCRIPT
  *******************************************************************************************
  *******************************************************************************************/
-function validarJS(e) {
+function validarJS(eventopordefecto) {
     
     // Validamos cada uno de los apartados con llamadas a sus funciones correspondientes.
-    return validarActores() // && validarXXXXX();             
+    return validarEdad() // && validarXXXXX();             
 }
 /***************************************************************************/
 /************************FUNCIONES INDIVIDUALES*****************************/
 /***************************************************************************/
-function validarActores() {
+function validarEdad() {
+ 
+    let inputEdad=formulario.elements["idEdad"]
+    let spanEdad=document.getElementById('idEdadError')    
+    
 
-    let valorInput = formulario.elements["idActores"];
-    let spanActores = document.getElementById("idActoresError");
-    let valorOptions = Array.from(document.getElementById("actores").options);
+    if(inputEdad.value == ""){
+        //Añadir la clase error al elemento
+        inputEdad.classList.add("errorInput")
+        //Para poner el foco en ese elemento y poder editar el error
+        inputEdad.focus();
+        spanEdad.innerHTML=`Campo obligatorio`;
+        return false
+    }
 
-    let encontrado = false;
-
-    valorOptions.forEach(option => {
-        if (option.value === valorInput.value) {
-            encontrado = true;
-        } 
-    });
-
-    if (!encontrado) {
-        valorInput.className = "error";
-        valorInput.focus();
-        spanActores.innerHTML=`No está en la lista`;
-        return false;
+    if(inputEdad.value > 100 || inputEdad.value < 1){        
+        inputEdad.classList.add("errorInput")      
+        inputEdad.focus();
+        spanEdad.innerHTML=`Edad debe ser mayor a 1 y menor que 100`;
+       
+        return false
     }
 
     return true;
 }
+  
 
 
 /********************************************************************************************
@@ -80,16 +82,16 @@ function validarActores() {
  ******** FUNCIÓN PARA VALIDAR, MEDIANTE EL USO DE LA API DE ACCESO A LA VALIDACIÓN DE HTML 
  *******************************************************************************************
  ********************************************************************************************/
-// function validarAPIHTML(eventopordefecto) {
+function validarAPIHTML(eventopordefecto) {
     
-//     return validarNombreAPIHTML() //&& validarXXXXAPIHTML;            
+    return validarNombreAPIHTML() //&& validarXXXXAPIHTML;            
 
-// }
+}
 
 /***************************************************************************/
 /************************FUNCIONES INDIVIDUALES*****************************/
 /***************************************************************************/
-/*
+
 function validarNombreAPIHTML() {
     
     let inputNombre= formulario.elements["idNombre"]    
@@ -99,7 +101,7 @@ function validarNombreAPIHTML() {
         
         let mensajeError= `Campo obligatorio`
         
-        inputNombre.className = "error";
+        inputNombre.classList.add("errorInput")
         inputNombre.focus();       
         inputNombre.setCustomValidity(mensajeError);
         spanNombre.innerHTML = inputNombre.validationMessage;
@@ -108,6 +110,6 @@ function validarNombreAPIHTML() {
     }
     return true;
 }
-*/
+
 
 
