@@ -94,14 +94,28 @@ function validarAPIHTML(eventopordefecto) {
 
 function validarNombreAPIHTML() {
     
-    let inputNombre= formulario.elements["idNombre"]    
-    let spanNombre=document.getElementById('idNombreError')
+    let inputNombre = formulario.elements["idNombre"]    
+    let spanNombre = document.getElementById('idNombreError')
 
     if (inputNombre.validity.valueMissing){     
         
-        let mensajeError= `Campo obligatorio`
+        let mensajeError = `Campo obligatorio`
         
-        inputNombre.classList.add("errorInput")
+        // inputNombre.classList.add("errorInput")
+        inputNombre.className = "errorInput"
+        inputNombre.focus();       
+        inputNombre.setCustomValidity(mensajeError);
+        spanNombre.innerHTML = inputNombre.validationMessage;
+        
+        return false;
+    }
+
+    if (inputNombre.validity.tooLong){     
+        
+        let mensajeError = `Demasiado largo`
+        
+        // inputNombre.classList.add("errorInput")
+        inputNombre.className = "errorInput"
         inputNombre.focus();       
         inputNombre.setCustomValidity(mensajeError);
         spanNombre.innerHTML = inputNombre.validationMessage;
