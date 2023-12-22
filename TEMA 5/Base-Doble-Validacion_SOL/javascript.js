@@ -50,7 +50,7 @@ function validarJS(eventopordefecto) {
 /************************FUNCIONES INDIVIDUALES*****************************/
 /***************************************************************************/
 function validarEdad() {
- 
+
     let inputEdad=formulario.elements["idEdad"]
     let spanEdad=document.getElementById('idEdadError')    
     

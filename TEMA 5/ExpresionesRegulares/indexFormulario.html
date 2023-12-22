@@ -1,0 +1,92 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link type="text/css" rel="stylesheet" href="estilos.css" />
+    <script type="text/javascript" src="javascript.js" defer> </script>
+</head>
+
+<body>
+    <fieldset>
+        <legend>Validación de un Expresiones Regulares</legend>
+        <form name="formulario" id="idFormulario" action="#" method="get">
+            <label id="idLabelTexto" for="idTexto">Texto:</label>
+            <input type="text" name="texto" id="idTexto" required />
+            <span id="idTextoError" class="errorSpan"></span>
+
+            <input type="radio" id="idApartado1" name="expresiones" value="apartado1">
+            <label for="idApartado1">1 .- Empieza en a</label>
+
+
+            <input type="radio" id="idApartado2" name="expresiones" value="apartado2">
+            <label for="idApartado2">2 .- Termine en a</label>
+
+
+            <input type="radio" id="idApartado3" name="expresiones" value="apartado3">
+            <label for="idApartado3">3 .- Cualquier carácter seguido de una a o b o c o d</label>
+
+
+            <input type="radio" id="idApartado4" name="expresiones" value="apartado4">
+            <label for="idApartado4">4 .- Ninguno, uno o más dígitos...</label>
+
+
+            <input type="radio" id="idApartado5" name="expresiones" value="apartado5">
+            <label for="idApartado5">5 .- Código postal</label>
+
+
+            <input type="radio" id="idApartado6" name="expresiones" value="apartado6">
+            <label for="idApartado6">6 .- Matrícula de un coche</label>
+
+
+            <input type="radio" id="idApartado7" name="expresiones" value="apartado7">
+            <label for="idApartado7">7 .- NIF</label>
+
+
+            <input type="radio" id="idApartado8" name="expresiones" value="apartado8">
+            <label for="idApartado8">8 .- Número de teléfono</label>
+
+
+            <input type="radio" id="idApartado9" name="expresiones" value="apartado9">
+            <label for="idApartado9">9 .- Dirección IPv4.</label>
+
+
+            <input type="radio" id="idApartado10" name="expresiones" value="apartado10">
+            <label for="idApartado10">10 .- Dirección IPv6</label>
+
+
+            <input type="radio" id="idApartado11" name="expresiones" value="apartado11">
+            <label for="idApartado3">11 .- Número binario</label>
+
+
+            <input type="radio" id="idApartado12" name="expresiones" value="apartado12">
+            <label for="idApartado12">12 .- Número hexadecimal.</label>
+
+
+            <input type="radio" id="idApartado13" name="expresiones" value="apartado13">
+            <label for="idApartado13">13 .- Fecha con formato dd/mm/aaaa </label>
+
+
+            <input type="radio" id="idApartado14" name="expresiones" value="apartado14">
+            <label for="idApartado14">14 .- Email.</label>
+
+
+            <input type="radio" id="idApartado15" name="expresiones" value="apartado15">
+            <label for="idApartado15">15 .- Usuario en twitter</label>
+
+
+            <input type="radio" id="idApartado16" name="expresiones" value="apartado16">
+            <label for="idApartado16">16 .- ISBN</label>
+
+
+            <div id="idZonaBotones">
+                <input type="reset" name="limpiar" id="idLimpiar" value="Limpiar" />
+                <input type="submit" name="enviar" id="idEnviar" value="Enviar" />
+            </div>
+        </form>
+    </fieldset>
+</body>
+
+</html>
