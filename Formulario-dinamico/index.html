@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Aficiones</title>
+    <link rel="stylesheet" type="text/css" href="./css/estilos.css">
+    <!-- <script src="/construir-formulario.js" defer></script> -->
+    <script src="./js/construir-formulario.js" defer></script>
+    <!-- <script src="/validar-formulario.js" defer></script> -->
+    <script src="./js/validar-formulario.js" defer></script>
+</head>
+<body>
+    <form id="idFormulario">
+        <h2>Ficha de Película</h2>
+        <label for="idNombre">Nombre</label>
+        <input type="text" id="idNombre" name="nombre">
+        <span id="idErrorNombre"></span>
+
+        <br>
+
+        <label for="idCodigo">Codigo</label>
+        <input type="text" id="idCodigo" name="codigo">
+        <span id="idErrorCodigo"></span>
+        <br>
+
+        <label for="idAnio">Año</label>
+        <input type="number" id="idAnio" name="anio"
+            min="1895" max="2024">
+        <span id="idErrorAnio"></span>
+
+        <label for="idWeb">Dirrección Web</label>
+        <input type="text" id="idWeb" name="web" required 
+            pattern="^(https?:\/\/)?([a-zA-Z0-9-\]+\.){1,}[a-zA-Z]{2,}(:[0-9]+)?(\/[^\s]*)?$" >
+        <span id="idErrorWeb" ></span>       
+        
+        <div id="idZonaIdiomas">           
+            
+        </div>  
+        <span id="idErrorIdioma"></span>
+
+        <label>Genero:</label>
+        <div id="idZonaGenero">
+           
+
+        </div> 
+        <span id="idErrorGenero"></span>
+        
+
+        <label for="comentarios">Comentarios:</label>
+        <textarea id="comentarios" name ="comentarios" rows="4"></textarea>
+
+        <input type="submit" id="idEnviar" value="Enviar">
+        <input type="reset" id="idLimpiar" value="Limpiar">
+    </form>
+</body>
+</html>
