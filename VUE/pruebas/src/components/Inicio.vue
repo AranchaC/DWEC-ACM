@@ -9,6 +9,7 @@ defineProps({
 })
 
 const count = ref(0)
+//variable reactiva, se puede usar en el template y se actualiza automáticamente
 
 </script>
 
@@ -16,8 +17,10 @@ const count = ref(0)
   <div>
     <h1>{{ msg }}</h1>
 
+    <!-- mostrar varibales a nivel html -->
     {{ count }}
 
+    <!-- Eventos con @ -->
     <button @click="count++">Count</button>
 
   </div>
