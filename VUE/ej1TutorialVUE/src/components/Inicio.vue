@@ -36,23 +36,25 @@
 
   //Ej 7:
   let id = 0;
+  const dni = ref('')
   const nuevo = ref('')
   const lista = ref([
-    { id: id++, texto: 'HTML' },
-    { id: id++, texto: 'JavaScript' },
-    { id: id++, texto: 'Vue' }
+    { id: id++, dni:"55555555B", texto: 'HTML' },
+    { id: id++, dni:"11111111B", texto: 'JavaScript' },
+    { id: id++, dni:"88888888B", texto: 'Vue' }
   ])
 
   function anadeNuevo() {
     lista.value.push({
-      id: id++,
+      dni: dni.value,
       texto: nuevo.value
     })
     nuevo.value = '';
+    dni.value = '';
   }
 
   function borrar(index) {
-    lista.value.splice(index, 1);
+    lista.value = lista.value.filter((t) => t !== index)
   }
 
 </script>
@@ -76,14 +78,18 @@
     <h1 v-else>Oh no 😢</h1>
     <br><br>
 
+    <!-- ej7 -->
     <form @submit.prevent="anadeNuevo">
+      <label for="">Texto</label>
       <input v-model="nuevo">
+      <label for="">DNI</label>
+      <input v-model="dni">
       <button>Añade</button>    
     </form>
     <ul>
-      <li v-for="elemento in lista" :key="texto.id">
-        {{ elemento.texto }}
-        <button @click="borrar(index)">X</button>
+      <li v-for="elemento in lista" :key="elemento.dni">
+        {{ elemento.dni }} - {{ elemento.texto }}
+        <button @click="borrar(elemento)">X</button>
       </li>
     </ul>
 
@@ -105,6 +111,10 @@
     &:hover{
       background-color: violet;
     }
+  }
+
+  input{
+    display: block;
   }
 
 </style>
