@@ -44,6 +44,7 @@
     { id: id++, dni:"88888888B", texto: 'Vue' }
   ])
 
+
   function anadeNuevo() {
     lista.value.push({
       dni: dni.value,
@@ -55,6 +56,11 @@
 
   function borrar(index) {
     lista.value = lista.value.filter((t) => t !== index)
+  }
+
+  function limpiar() {
+    nuevo.value = '';
+    dni.value = '';
   }
 
 </script>
@@ -79,19 +85,21 @@
     <br><br>
 
     <!-- ej7 -->
-    <form @submit.prevent="anadeNuevo">
+    <!-- <form @submit.prevent="anadeNuevo">
       <label for="">Texto</label>
       <input v-model="nuevo">
       <label for="">DNI</label>
       <input v-model="dni">
-      <button>Añade</button>    
+      <button>Añade</button>  
     </form>
+    <button @click="limpiar">Limpiar datos</button>  
+
     <ul>
       <li v-for="elemento in lista" :key="elemento.dni">
         {{ elemento.dni }} - {{ elemento.texto }}
         <button @click="borrar(elemento)">X</button>
       </li>
-    </ul>
+    </ul> -->
 
   </div>
 </template>
