@@ -15,6 +15,7 @@ let ancho = ref(0)
 const area = computed(() => ancho.value * largo.value)
 const perimetro = computed(() => 2*ancho.value + 2*alto.value)
 const volumen = computed(() => ancho.value * alto.value * largo.value)
+const ok = computed(() => largo.value !== 0 || alto.value !== 0 || ancho.value !== 0);
 
 const mensajes = reactive({
   largo:"",
@@ -50,6 +51,7 @@ function limpiar() {
   largo.value = 0;
   alto.value = 0;
   ancho.value = 0;
+
 }
 
 function limpiarMens() {
@@ -57,6 +59,10 @@ function limpiarMens() {
   mensajes.alto = "";
   mensajes.ancho = "";
 }
+
+// if (largo.value == 0 || alto.value == 0 || ancho.value == 0){
+//   ok: false;
+// }
 
 
 </script>
@@ -84,11 +90,15 @@ function limpiarMens() {
     <button @click="limpiar">Limpiar datos</button> 
     <br>
     <button @click="limpiarMens">Limpiar Mensajes de error.</button>  
-
     <br><br>
-    <p :class="area">Tu área es {{ area }}</p>
-    <p :class="perimetro">Tu perímetro es {{ perimetro }}</p>
-    <p :class="volumen">Tu volumen es {{ volumen }}</p>
+        
+    <div v-show="ok">
+      <p :class="area">Tu área es {{ area }}</p>
+      <p :class="perimetro">Tu perímetro es {{ perimetro }}</p>
+      <p :class="volumen">Tu volumen es {{ volumen }}</p>
+    </div>
+
+
 
   </div>
 </template>
