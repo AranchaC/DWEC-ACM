@@ -6,7 +6,7 @@ defineProps({
   }
 })
 
-import { ref, reactive, computed , watch} from 'vue'
+import { ref, reactive, computed , watch, onMounted} from 'vue'
 
 let largo = ref(0)
 let alto = ref(0)
@@ -63,10 +63,18 @@ function limpiarMens() {
   mensajes.ancho = "";
 }
 
-// if (largo.value == 0 || alto.value == 0 || ancho.value == 0){
-//   ok: false;
-// }
+// onMounted //
 
+const pElementRef = ref(null)
+
+onMounted(() => {
+  pElementRef.value.textContent = 'mounted!'
+})
+
+onMounted(() => {
+  //pElementRef.value.textContent = 'mounted!'
+  console.log("HOla, el componente está montado")
+})
 
 </script>
 
@@ -101,7 +109,7 @@ function limpiarMens() {
       <p :class="volumen">Tu volumen es {{ volumen }}</p>
     </div>
 
-
+    <p ref="pElementRef">hello</p>
 
   </div>
 </template>
