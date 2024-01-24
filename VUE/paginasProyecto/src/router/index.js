@@ -15,8 +15,8 @@ const router = createRouter({
             name:'listar',
             component: paginaListar
         }, 
-        {   path: '/listado', 
-            name:'listar',
+        {   path: '/sobremi', 
+            name:'SobreMi',
             component: paginaSobreMi
         }, 
         //Si se produce un error
