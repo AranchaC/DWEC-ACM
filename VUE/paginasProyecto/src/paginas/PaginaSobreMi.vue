@@ -4,7 +4,7 @@
 
 <template>
   <div>
-    <h1>Página Principal</h1>
+    <h1>Página Sobre Mi</h1>
     <p>Página principal de la web.</p>
 
   </div>

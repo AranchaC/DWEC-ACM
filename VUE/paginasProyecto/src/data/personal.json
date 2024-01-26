@@ -1,0 +1,8 @@
+{
+    "aficiones": [
+      { "id": "1", "nombre": "cocinar", "descripcion": "croquetas", "url": "src/assets/cocinar.jpg" },
+      { "id": "2", "nombre": "viajar", "descripcion": "por todo el mundo", "url": "src/assets/viajar.jpeg" },
+      { "id": "3", "nombre": "música", "descripcion": "rock", "url": "src/assets/música.jpeg" },
+      { "id": "4", "nombre": "cine", "descripcion": "cine", "url": "src/assets/cine.jpeg" }
+    ]
+  }
