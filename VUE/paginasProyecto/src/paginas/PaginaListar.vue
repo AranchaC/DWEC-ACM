@@ -3,6 +3,7 @@
 import servicioAficiones from '@/servicios/personal/servicioAficiones.js' ;
 import { ref, onMounted } from 'vue';
 let aficiones = ref(null)
+let imagenUrl = ref()
 
 function obtenerAficiones() {
   servicioAficiones
@@ -20,24 +21,34 @@ onMounted(() => {
   obtenerAficiones();
 });
 
+//funcion detalles, para obtener los detalles de cada nombre
+function detalles(aficion){
+  console.log("comer croquetas");
+  imagenUrl.value=aficion.url;
+  };
+
+
 </script>
 
 <template>
       <h1>Página Listar</h1>
       <h2>Lista de aficiones</h2>
       <ul>
-        <li v-for="(aficion, id) in aficiones" :key="id">
+        <li v-for="(aficion, id) in aficiones" :key="id" @click="detalles(aficion)">
           <span class="li-nombre"> {{ aficion.nombre }}</span>
           <span class="li-descripcion"> {{ aficion.descripcion }}</span>
-          <img :src= "aficion.url" />
+          <!-- <img :src= "aficion.url" /> -->
         </li>
       </ul>
+
+      <img :src="imagenUrl" />
+      
 </template>
 
 <style scoped>
 img {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
 }
 ul {
   list-style-type: none;
