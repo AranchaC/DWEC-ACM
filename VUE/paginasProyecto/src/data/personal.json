@@ -1,8 +1,34 @@
 {
-    "aficiones": [
-      { "id": "1", "nombre": "cocinar", "descripcion": "croquetas", "url": "src/assets/cocinar.jpg" },
-      { "id": "2", "nombre": "viajar", "descripcion": "por todo el mundo", "url": "src/assets/viajar.jpeg" },
-      { "id": "3", "nombre": "música", "descripcion": "rock", "url": "src/assets/música.jpeg" },
-      { "id": "4", "nombre": "cine", "descripcion": "cine", "url": "src/assets/cine.jpeg" }
-    ]
-  }
+  "aficiones": [
+    {
+      "id": "1",
+      "nombre": "cocinar",
+      "descripcion": "croquetas",
+      "url": "src/assets/cocinar.jpg"
+    },
+    {
+      "id": "2",
+      "nombre": "cine",
+      "descripcion": "ver pelis",
+      "url": "src/assets/cine.jpeg"
+    },
+    {
+      "id": "3",
+      "nombre": "música",
+      "descripcion": "rock puro y duro",
+      "url": "src/assets/música.jpeg"
+    },
+    {
+      "id": "3",
+      "nombre": "vajar",
+      "descripcion": "a Costa Rica",
+      "url": "src/assets/viajar.jpeg"
+    },
+    {
+      "id": "f6b7",
+      "nombre": "leer",
+      "descripcion": "harry potter",
+      "url": "https://www.toysrus.es/medias/?context=bWFzdGVyfHByb2R1Y3RfaW1hZ2VzfDE2ODU0fGltYWdlL2pwZWd8YUdNNUwyaGlOeTh4TURreE9ERTVOall3T1RBMU5BfDFjYjUyYTBjYWMxMDU0YTBhYzM4NzVjMGEzNzAzZDE2MGRkYmVjOTIzYzc3ZDY5MzA0NDRiMzNjODRmMWUyNmI"
+    }
+  ]
+}
