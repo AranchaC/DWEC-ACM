@@ -9,6 +9,13 @@ let nombre = ref('');
 let descripcion = ref('');
 let url = ref('');
 
+// let nuevaAficion = reactive({
+//   nombre:"",
+//   descripcion:"",
+//   url:""
+// })
+
+
 function obtenerAficiones() {
   servicioAficiones
     .getAll()
@@ -29,25 +36,25 @@ onMounted(() => {
 function detalles(aficion){
   console.log("comer croquetas");
   imagenUrl.value=aficion.url;
-  };
+};
 
-  function borrar(aficion){
-    //función para el click del botón, donde borro toda la fila:
-    if (confirm("¿Quieres borrar esta afición?")){
-      //llamo a función delete del servicio:
-      servicioAficiones.delete(aficion.id).then((response)=>{
-        let index = aficiones.value.indexOf(aficion);
-        aficiones.value.splice(index,1);
-        alert(`Afición borrada.`)
-        })
-        .catch((error) => {
-          alert("Problema de conexión");
-        }) 
-    }
-  }//borrar
+function borrar(aficion){
+  //función para el click del botón, donde borro toda la fila:
+  if (confirm("¿Quieres borrar esta afición?")){
+    //llamo a función delete del servicio:
+    servicioAficiones.delete(aficion.id).then((response)=>{
+      let index = aficiones.value.indexOf(aficion);
+      aficiones.value.splice(index,1);
+      alert(`Afición borrada.`)
+      })
+      .catch((error) => {
+        alert("Problema de conexión");
+      }) 
+  }
+}//borrar
 
-  //función post agregar nueva aficion al array aficiones:
-  function agregarAficion() {
+//función post agregar nueva aficion al array aficiones:
+function agregarAficion() {
   const nuevaAficion = {
     nombre: nombre.value,
     descripcion: descripcion.value,
@@ -55,9 +62,7 @@ function detalles(aficion){
   };
 
   // Enviar los datos de la nueva afición al método post del servicio
-  servicioAficiones
-    .post(nuevaAficion)
-    .then(() => {
+  servicioAficiones.post(nuevaAficion).then(() => {
       // Actualizar la lista de aficiones después de agregar la nueva
       obtenerAficiones();
 
@@ -67,11 +72,9 @@ function detalles(aficion){
       url.value = '';
     })
     .catch(() => {
-      alert("Hubo un problema al agregar la afición. Por favor, inténtalo de nuevo más tarde.");
+      alert("Problema al agregar la afición.");
     });
-}
-
-
+}//agregarAfición
 
 
 </script>
@@ -81,12 +84,12 @@ function detalles(aficion){
       <h2>Lista de aficiones</h2>
 
       <form class="form" @submit.prevent="agregarAficion">
-        <div class="form-inputs">
+
           <input type="text" v-model="nombre" placeholder="Nombre"/>
           <input type="text" v-model="descripcion" placeholder="Descripción"/>
           <input type="text" v-model="url" placeholder="URL de la imagen"/>
-          <button>Agregar Aficación</button>
-        </div>
+          <button>Agregar Afición</button>
+
       </form>
 
       <ul>
@@ -106,14 +109,14 @@ function detalles(aficion){
 .form{
   text-align: center;
   padding: 10px;
-}
-.form-inputs {
   display: flex;
   justify-content: center;
   gap: 10px;
+  flex-wrap: wrap;
+
 }
 
-.form-inputs button {
+.form button {
   margin-left: 40px;
 }
 
