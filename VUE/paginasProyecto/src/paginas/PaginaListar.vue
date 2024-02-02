@@ -1,21 +1,26 @@
 <script setup>
 
 import servicioAficiones from '@/servicios/personal/servicioAficiones.js' ;
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, reactive } from 'vue';
 let aficiones = ref(null)
 let imagenUrl = ref()
+let filtroNombre = ref()
 
-let nombre = ref('');
-let descripcion = ref('');
-let url = ref('');
+// variable reactiva que capta los campos del form //
+let nuevaAficion = reactive({
+  nombre:"",
+  descripcion:"",
+  url:""
+})
 
-// let nuevaAficion = reactive({
-//   nombre:"",
-//   descripcion:"",
-//   url:""
-// })
+let modifAficion = reactive({
+  id: null,
+  nombre:"",
+  descripcion:"",
+  url:""
+})
 
-
+//** FUNCIÓN GET_ALL OBTENER **//
 function obtenerAficiones() {
   servicioAficiones
     .getAll()
@@ -28,16 +33,18 @@ function obtenerAficiones() {
     })
 }
 
+// cuando se abre la página, se llama a la función obtnerAficiones //
 onMounted(() => {
   obtenerAficiones();
 });
 
-//funcion detalles, para obtener los detalles de cada nombre
+//funcion detalles, para obtener los detalles de cada nombre //
 function detalles(aficion){
   console.log("comer croquetas");
   imagenUrl.value=aficion.url;
 };
 
+//** FUNCIÓN DELETE BORRAR **//
 function borrar(aficion){
   //función para el click del botón, donde borro toda la fila:
   if (confirm("¿Quieres borrar esta afición?")){
@@ -53,28 +60,67 @@ function borrar(aficion){
   }
 }//borrar
 
-//función post agregar nueva aficion al array aficiones:
-function agregarAficion() {
-  const nuevaAficion = {
-    nombre: nombre.value,
-    descripcion: descripcion.value,
-    url: url.value,
-  };
 
+//** FUNCIÓN LIMPIAR campos form **//
+function limpiar(){
+  nuevaAficion.nombre = "";
+  nuevaAficion.descripcion = "";
+  nuevaAficion.url = "";
+}
+
+//** FUNCIÓN POST AGREGAR **//
+function agregarAficion() {
   // Enviar los datos de la nueva afición al método post del servicio
-  servicioAficiones.post(nuevaAficion).then(() => {
+  servicioAficiones
+    .post(nuevaAficion)
+    .then((res) => {
       // Actualizar la lista de aficiones después de agregar la nueva
       obtenerAficiones();
-
-      // Limpiar los campos del formulario después de agregar la afición
-      nombre.value = '';
-      descripcion.value = '';
-      url.value = '';
+      limpiar();
+      alert("Afición añadida.");
     })
     .catch(() => {
       alert("Problema al agregar la afición.");
     });
 }//agregarAfición
+
+//*** FUNCIÓN BUSCAR AFICIÓN POR ID ***//
+function buscarAficion(){
+  servicioAficiones
+    .findByNombre(filtroNombre.value)
+    .then((res) =>{
+      aficiones.value = res.data;
+      alert('Nueva lista');
+
+    }).catch(()=>{
+      alert('No se encontró la afición');     
+  })
+}
+
+//*** FUNCIÓN PUT MODIFICAR AFICIÓN ***//
+function modificarAficion(){
+  servicioAficiones
+    .update(modifAficion.id, {
+      nombre: modifAficion.nombre,
+      descripcion: modifAficion.descripcion,
+      url: modifAficion.url
+    })
+    .then((res) =>{
+      obtenerAficiones();
+      alert('Afición modificada.');
+
+    }).catch(()=>{
+      alert('No se encontró la afición');     
+  })
+}
+
+function volcar(aficion){
+  modifAficion.id = aficion.id;
+  modifAficion.nombre = aficion.nombre;
+  modifAficion.descripcion = aficion.descripcion;
+  modifAficion.url = aficion.url;
+}
+
 
 
 </script>
@@ -84,12 +130,25 @@ function agregarAficion() {
       <h2>Lista de aficiones</h2>
 
       <form class="form" @submit.prevent="agregarAficion">
-
-          <input type="text" v-model="nombre" placeholder="Nombre"/>
-          <input type="text" v-model="descripcion" placeholder="Descripción"/>
-          <input type="text" v-model="url" placeholder="URL de la imagen"/>
-          <button>Agregar Afición</button>
-
+          <p>Agregar nueva afición:</p>
+          <input type="text" v-model="nuevaAficion.nombre" placeholder="Nombre"/>
+          <input type="text" v-model="nuevaAficion.descripcion" placeholder="Descripción"/>
+          <input type="text" v-model="nuevaAficion.url" placeholder="URL de la imagen"/>
+          <button>Agregar</button>
+      </form>
+      <br>
+      <form class="form" @submit.prevent="modificarAficion">
+          <p>Modificar afición:</p>
+          <input type="text" v-model="modifAficion.nombre" placeholder="Nombre"/>
+          <input type="text" v-model="modifAficion.descripcion" placeholder="Descripción"/>
+          <input type="text" v-model="modifAficion.url" placeholder="URL de la imagen"/>
+          <button>Modificar</button>
+      </form>
+      <br>
+      <form class="form" @submit.prevent="buscarAficion(nombre)">
+          <p>Buscar afición:</p>
+          <input type="text" v-model="filtroNombre" placeholder="Nombre"/>
+          <button>Buscar</button>
       </form>
 
       <ul>
@@ -97,15 +156,20 @@ function agregarAficion() {
           <span class="li-nombre"> {{ aficion.nombre }}</span>
           <span class="li-descripcion"> {{ aficion.descripcion }}</span>
           <button class="bot" @click="borrar(aficion)"> X </button>
+          <button class="bot" @click="volcar(aficion)"> Modificar </button>
           <!-- <img :src= "aficion.url" /> -->
         </li>
       </ul>
 
-      <img :src="imagenUrl" />
+      <div class="imgCont">
+        <img :src="imagenUrl" />
+      </div>
       
 </template>
 
 <style scoped>
+
+
 .form{
   text-align: center;
   padding: 10px;
@@ -113,17 +177,20 @@ function agregarAficion() {
   justify-content: center;
   gap: 10px;
   flex-wrap: wrap;
-
 }
 
 .form button {
   margin-left: 40px;
 }
 
+.imgCont{
+  width: 100%;
+  text-align: center;
+}
 img {
   width: 200px;
   height: 200px;
-
+  margin: auto;
 }
 
 ul {
@@ -153,7 +220,7 @@ ul li span.li-nombre {
 }
 ul li span.li-descripcion {
   display: block;
-  width: 60%;
+  width: 40%;
   height: 50px;
 
   font-weight: bold;
