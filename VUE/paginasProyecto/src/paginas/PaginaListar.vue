@@ -49,14 +49,16 @@ function borrar(aficion){
   //función para el click del botón, donde borro toda la fila:
   if (confirm("¿Quieres borrar esta afición?")){
     //llamo a función delete del servicio:
-    servicioAficiones.delete(aficion.id).then((response)=>{
-      let index = aficiones.value.indexOf(aficion);
-      aficiones.value.splice(index,1);
-      alert(`Afición borrada.`)
-      })
-      .catch((error) => {
-        alert("Problema de conexión");
-      }) 
+    servicioAficiones
+      .delete(aficion.id)
+      .then((response)=>{
+        let index = aficiones.value.indexOf(aficion);
+        aficiones.value.splice(index,1);
+        alert(`Afición borrada.`)
+        })
+        .catch((error) => {
+          alert("Problema de conexión");
+        }) 
   }
 }//borrar
 
@@ -109,6 +111,10 @@ function modificarAficion(){
       obtenerAficiones();
       alert('Afición modificada.');
 
+        modifAficion.nombre = "";
+        modifAficion.descripcion = "";
+        modifAficion.url = "";
+
     }).catch(()=>{
       alert('No se encontró la afición');     
   })
@@ -155,8 +161,9 @@ function volcar(aficion){
         <li v-for="(aficion, id) in aficiones" :key="id" @dblclick="detalles(aficion)">
           <span class="li-nombre"> {{ aficion.nombre }}</span>
           <span class="li-descripcion"> {{ aficion.descripcion }}</span>
-          <button class="bot" @click="borrar(aficion)"> X </button>
+          <button class="bot" @click="borrar(aficion)">Borrar </button>
           <button class="bot" @click="volcar(aficion)"> Modificar </button>
+          <button class="bot" @click="detalles(aficion)">Ver </button>
           <!-- <img :src= "aficion.url" /> -->
         </li>
       </ul>

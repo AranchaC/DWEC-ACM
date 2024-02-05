@@ -22,9 +22,13 @@ class servicioAficiones {
         return http.get(`/aficiones?nombre=${nombre}`)
     }
 
+    findByGeneral
+
     update(id, data){
         return http.put(`/aficiones/${id}`,data);
     }
+
+    
 }
 
 export default new servicioAficiones();
