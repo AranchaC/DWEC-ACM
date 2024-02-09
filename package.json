@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "vue-cryptojs": "^2.4.5"
+  }
+}

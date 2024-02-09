@@ -5,10 +5,17 @@ const props = defineProps({
     "titulo":String,
     "links":Array,
 })
+
+let usuario 
+if (localStorage.getItem("usuario") != null){
+    usuario = localStorage.getItem("usuario")
+}
+
 </script>
 
 <template> 
     <h1>{{ titulo }}</h1>
+    <h3 v-if="usuario">Sesión iniciada como:  {{ usuario }}</h3>
     <nav>
         <RouterLink
          v-for="enlace in props.links"
@@ -23,7 +30,6 @@ const props = defineProps({
 
 span.enlace-menu{
     display:inline-block;
-    width:33%;
     padding:5px 10px;
     background-color:#000;
     border:1px solid #000;
@@ -36,6 +42,9 @@ span.enlace-menu:hover{
 }
 nav{
     margin-bottom: 2vh;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #000;
 }
 
 </style>
