@@ -22,10 +22,12 @@ class servicioAficiones {
         return http.get(`/aficiones?nombre=${nombre}`)
     }
 
-    findByGeneral
-
     update(id, data){
         return http.put(`/aficiones/${id}`,data);
+    }
+
+    getUsuario(clave) {
+        return http.get(`/usuarios/${clave}`);
     }
 
     

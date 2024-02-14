@@ -1,10 +1,13 @@
-<script setup lang="ts">
+<script setup>
 
 import { ref, reactive } from'vue';
-import { inject } from 'vue'
-//   import CryptoJS from 'crypto-js'
+
+import servicioAficiones from '@/servicios/personal/servicioAficiones.js' ;
+
+import bcrypt from 'bcryptjs';
 
 //   const cryptojs = inject('cryptojs') as typeof CryptoJS
+// npm install bcryp
 
 
 let password = ref()
@@ -12,14 +15,20 @@ let usuario = ref(null)
 let sesionIniciada
 
 function acceder(){
-    if(password.value == "1234"){
-        alert("Acceso Correcto");
-        localStorage.setItem("usuario", usuario.value)
-        location.reload();
-        sesionIniciada = true;
-    }else{
-        alert("Contraseña Incorrecta");
-    }
+
+    usuario.value
+    password.value
+    let token = // Encriptar usuario y password
+
+    servicioAficiones.getUsuario(token).then
+    // if(password.value == "1234"){
+    //     alert("Acceso Correcto");
+    //     localStorage.setItem("usuario", usuario.value)
+    //     location.reload();
+    //     sesionIniciada = true;
+    // }else{
+    //     alert("Contraseña Incorrecta");
+    // }
 }
 
 function cerrarSesion(){
