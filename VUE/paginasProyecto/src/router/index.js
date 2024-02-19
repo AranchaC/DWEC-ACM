@@ -14,23 +14,45 @@ const router = createRouter({
         },  
         {   path: '/listado', 
             name:'listar',
-            component: paginaListar
+            component: paginaListar,
+            beforeEnter: (to, from, next) => {
+                let usuario = localStorage.getItem('usuario')   
+                //console.log(usuario)             
+                if (usuario!==null) {
+                    next()
+                } else {
+                    next('/usuario')
+                }
+            }
         }, 
         {   path: '/sobremi', 
             name:'sobreMi',
-            component: paginaSobreMi
+            component: paginaSobreMi,
+            beforeEnter: (to, from, next) => {
+                let usuario = localStorage.getItem('usuario')   
+                //console.log(usuario)             
+                if (usuario!==null) {
+                    next()
+                } else {
+                    next('/usuario')
+                }
+            }
         }, 
         {   path: '/iniciosesion', 
             name:'inicioSesion',
             component: inicioSesion
+            
         }, 
         //Si se produce un error
         {
             path: '/:pathMatch(.*)*',
             redirect:() => ({ name:'inicio'})
         }
+        
     ]
+    
 
 });
+
 
 export default router;

@@ -1,42 +1,51 @@
 <script setup>
 
 import { ref, reactive } from'vue';
+import { useRouter } from "vue-router";
 
 import servicioAficiones from '@/servicios/personal/servicioAficiones.js' ;
 
-import bcrypt from 'bcryptjs';
-
-//   const cryptojs = inject('cryptojs') as typeof CryptoJS
-// npm install bcryp
-
-
+const rutas = useRouter();
 let password = ref()
-let usuario = ref(null)
-let sesionIniciada
+let usuario = ref()
 
 function acceder(){
 
-    usuario.value
-    password.value
-    let token = // Encriptar usuario y password
+    if (usuario !== "" && password !== "") {
 
-    servicioAficiones.getUsuario(token).then
-    // if(password.value == "1234"){
-    //     alert("Acceso Correcto");
-    //     localStorage.setItem("usuario", usuario.value)
-    //     location.reload();
-    //     sesionIniciada = true;
-    // }else{
-    //     alert("Contraseña Incorrecta");
-    // }
+
+    servicioAficiones.findByUsuario(window.btoa(usuario.value+password.value))
+        .then((response) => {
+
+            if (response.data.length === 0) {
+                alert("el usuario no existe")
+                localStorage.setItem("usuario", null)
+                console.log(usuario.value)
+                console.log(password.value)
+            }
+            else {
+                localStorage.setItem("usuario", usuario.value)
+
+                //Recargar Página
+                //Opción 1:  
+                //location.reload();
+
+                //Opción 2: 
+                rutas.go();
+            }
+            // console.log(response.data.length)
+                
+
+        })
+        .catch((error) => {
+            alert("usuario incorrecto")
+            console.log(error);
+            console.log(usuario.value)
+            console.log(password.value)
+
+        })
+    }  
 }
-
-function cerrarSesion(){
-    localStorage.removeItem('usuario');
-    location.reload();
-    alert("Has cerrado sesión.")
-}
-
 
 
 </script>
@@ -44,7 +53,7 @@ function cerrarSesion(){
 <template>
     <div class="form-container">
         <h2>Iniciar Sesión</h2>
-        <form action="#" method="post" @submit.prevent="acceder">
+        <form action="#" method="post" @submit.prevent="acceder()">
             <div class="form-group">
                 <label for="username">Nombre de Usuario:</label>
                 <input v-model="usuario" type="text" id="username" name="username" required>
@@ -55,9 +64,6 @@ function cerrarSesion(){
             </div>
             <button type="submit">Acceder</button>
         </form>
-    </div>
-    <div class="form-container">
-        <button type="submit" @click="cerrarSesion">Cerrar sesión</button>
     </div>
 
 </template>
@@ -78,7 +84,6 @@ body {
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
 .form-container h2 {
     text-align: center;
     margin-bottom: 20px;
