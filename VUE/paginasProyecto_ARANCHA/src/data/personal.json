@@ -1,0 +1,55 @@
+{
+  "aficiones": [
+    {
+      "nombre": "cocinar",
+      "descripcion": "croquetas calabaza",
+      "url": "src/assets/cocinar.jpg",
+      "id": "1"
+    },
+    {
+      "nombre": "cine",
+      "descripcion": "ver pelis",
+      "url": "src/assets/cine.jpeg",
+      "id": "2"
+    },
+    {
+      "nombre": "viajar",
+      "descripcion": "por todo el mundo",
+      "url": "src/assets/viajar.jpeg",
+      "id": "3"
+    },
+    {
+      "id": "f6b7",
+      "nombre": "leer",
+      "descripcion": "harry potter",
+      "url": "https://www.toysrus.es/medias/?context=bWFzdGVyfHByb2R1Y3RfaW1hZ2VzfDE2ODU0fGltYWdlL2pwZWd8YUdNNUwyaGlOeTh4TURreE9ERTVOall3T1RBMU5BfDFjYjUyYTBjYWMxMDU0YTBhYzM4NzVjMGEzNzAzZDE2MGRkYmVjOTIzYzc3ZDY5MzA0NDRiMzNjODRmMWUyNmI"
+    },
+    {
+      "id": "efa3",
+      "nombre": "comer",
+      "descripcion": "queso",
+      "url": "https://img.europapress.es/fotoweb/fotonoticia_20220808081246_1200.jpg"
+    },
+    {
+      "id": "3b12",
+      "nombre": "música",
+      "descripcion": "rock",
+      "url": ""
+    }
+  ],
+  "usuarios": [
+    {
+      "nombre": "arancha",
+      "clave": "YXJhbmNoYWFyYW5jaGE=",
+      "id": "a870"
+    },
+    {
+      "id": "eva",
+      "clave": "ZXZhZXZh"
+    },
+    {
+      "id": "usuario3",
+      "clave": "clave3"
+    }
+  ]
+}
