@@ -1,12 +1,6 @@
 {
   "aficiones": [
     {
-      "nombre": "cocinar",
-      "descripcion": "croquetas calabaza",
-      "url": "src/assets/cocinar.jpg",
-      "id": "1"
-    },
-    {
       "nombre": "cine",
       "descripcion": "ver pelis",
       "url": "src/assets/cine.jpeg",
@@ -35,6 +29,12 @@
       "nombre": "música",
       "descripcion": "rock",
       "url": ""
+    },
+    {
+      "nombre": "excursion",
+      "descripcion": "ir al valle de los caídos",
+      "url": "https://media.revistavanityfair.es/photos/60e83c26c0a99700e552a825/master/w_1600%2Cc_limit/186999.jpg",
+      "id": "0aa3"
     }
   ],
   "usuarios": [
