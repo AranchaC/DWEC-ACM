@@ -110,7 +110,36 @@ function buscarAficion(){
 
 //*** FUNCIÓN PUT MODIFICAR AFICIÓN ***//
 function modificarAficion(){
-  servicioAficiones
+  Swal.fire({
+    title: "¿Quieres guardar los cambios?",
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: "Guardar",
+    denyButtonText: "No guardar"
+  }).then((result) => {
+    if (result.isConfirmed) {
+      servicioAficiones
+        .update(modifAficion.id, {
+          nombre: modifAficion.nombre,
+          descripcion: modifAficion.descripcion,
+          url: modifAficion.url
+        })
+        .then((res) => {
+          obtenerAficiones();
+          correcto("¡Afición modificada!");
+          modifAficion.nombre = "";
+          modifAficion.descripcion = "";
+          modifAficion.url = "";
+        })
+        .catch(() => {
+          error("¡Algo salió mal al modificar la afición!");
+        });
+    } else if (result.isDenied) {
+      Swal.fire("Los cambios no se guardaron", "", "info");
+    }
+  });
+
+  /*servicioAficiones
     .update(modifAficion.id, {
       nombre: modifAficion.nombre,
       descripcion: modifAficion.descripcion,
@@ -126,7 +155,7 @@ function modificarAficion(){
 
     }).catch(()=>{
       error('No se encontró la afición');     
-  })
+  })*/
 }
 
 function volcar(aficion){

@@ -2,6 +2,7 @@
 import { RouterLink} from 'vue-router';
 import { useRouter } from "vue-router";
 import {ref} from "vue";
+
 const props = defineProps({
     "titulo":String,
     "links":Array,

@@ -25,16 +25,16 @@
       "url": "https://img.europapress.es/fotoweb/fotonoticia_20220808081246_1200.jpg"
     },
     {
-      "id": "3b12",
       "nombre": "música",
       "descripcion": "rock",
-      "url": ""
+      "url": "src/assets/música.jpeg",
+      "id": "3b12"
     },
     {
-      "nombre": "excursion",
-      "descripcion": "ir al valle de los caídos",
-      "url": "https://media.revistavanityfair.es/photos/60e83c26c0a99700e552a825/master/w_1600%2Cc_limit/186999.jpg",
-      "id": "0aa3"
+      "nombre": "cocinar",
+      "descripcion": "croquetas con mucho queso",
+      "url": "",
+      "id": "307f"
     }
   ],
   "usuarios": [

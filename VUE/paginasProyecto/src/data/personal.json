@@ -45,9 +45,8 @@
   ],
   "usuarios": [
     {
-      "nombre": "arancha",
-      "clave": "YXJhbmNoYWFyYW5jaGE=",
-      "id": "a870"
+      "id": "arancha",
+      "clave": "YXJhbmNoYWFyYW5jaGE="
     },
     {
       "id": "eva",
