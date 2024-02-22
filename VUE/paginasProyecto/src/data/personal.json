@@ -1,12 +1,6 @@
 {
   "aficiones": [
     {
-      "nombre": "cocinar",
-      "descripcion": "croquetas",
-      "url": "src/assets/cocinar.jpg",
-      "id": "1"
-    },
-    {
       "nombre": "cine",
       "descripcion": "ver pelis",
       "url": "src/assets/cine.jpeg",
@@ -19,28 +13,22 @@
       "id": "3"
     },
     {
-      "id": "f6b7",
-      "nombre": "leer",
-      "descripcion": "harry potter",
-      "url": "https://www.toysrus.es/medias/?context=bWFzdGVyfHByb2R1Y3RfaW1hZ2VzfDE2ODU0fGltYWdlL2pwZWd8YUdNNUwyaGlOeTh4TURreE9ERTVOall3T1RBMU5BfDFjYjUyYTBjYWMxMDU0YTBhYzM4NzVjMGEzNzAzZDE2MGRkYmVjOTIzYzc3ZDY5MzA0NDRiMzNjODRmMWUyNmI"
-    },
-    {
-      "id": "efa3",
-      "nombre": "comer",
-      "descripcion": "queso",
-      "url": "https://img.europapress.es/fotoweb/fotonoticia_20220808081246_1200.jpg"
-    },
-    {
-      "id": "3b12",
       "nombre": "música",
       "descripcion": "rock",
-      "url": ""
+      "url": "src/assets/música.jpeg",
+      "id": "5bea"
     },
     {
-      "id": "779b",
-      "nombre": "deporte",
-      "descripcion": "bailar",
-      "url": "ddd"
+      "id": "43b8",
+      "nombre": "cocinar",
+      "descripcion": "croquetas",
+      "url": "src/assets/cocinar.jpg"
+    },
+    {
+      "nombre": "leer",
+      "descripcion": "harry potter",
+      "url": "src/assets/harry.jpg",
+      "id": "6bcd"
     }
   ],
   "usuarios": [

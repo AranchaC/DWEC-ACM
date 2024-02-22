@@ -58,22 +58,36 @@ function detalles(aficion){
 
 //** FUNCIÓN DELETE BORRAR **//
 function borrar(aficion){
-  //función para el click del botón, donde borro toda la fila:
-  if (confirm("¿Quieres borrar esta afición?")){
-    //llamo a función delete del servicio:
-    servicioAficiones
-      .delete(aficion.id)
-      .then((response)=>{
-        let index = aficiones.value.indexOf(aficion);
-        aficiones.value.splice(index,1);
-        correcto("Afición borrada correctamente.")
-        })
-        .catch((error) => {
-          error("Algo ha salido mal.")
-        }) 
-  }
+    // Mostrar el primer SweetAlert de confirmación
+    Swal.fire({
+      title: "¿Estás seguro?",
+      text: "¡No podrás revertir esto!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, ¡bórralo!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Si el usuario confirma, mostrar el segundo SweetAlert
+            Swal.fire({
+                title: "¡Eliminado!",
+                text: "Tu archivo ha sido eliminado.",
+                icon: "success"
+            }).then(() => {
+              servicioAficiones
+                .delete(aficion.id)
+                .then((response)=>{
+                  let index = aficiones.value.indexOf(aficion);
+                  aficiones.value.splice(index,1);
+                  })
+                  .catch((error) => {
+                    error("Algo ha salido mal.")
+                  })
+            });
+        }
+    });
 }//borrar
-
 
 //** FUNCIÓN LIMPIAR campos form **//
 function limpiar(){
@@ -98,7 +112,7 @@ function agregarAficion() {
     });
 }//agregarAfición
 
-//*** FUNCIÓN BUSCAR AFICIÓN POR ID ***//
+//*** FUNCIÓN GET - BUSCAR AFICIÓN POR ID ***//
 function buscarAficion(){
   servicioAficiones
     .findByNombre(filtroNombre.value)
