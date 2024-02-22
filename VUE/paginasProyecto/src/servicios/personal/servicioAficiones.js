@@ -34,7 +34,6 @@ class servicioAficiones {
         return http.get(`/usuarios?clave=${clave}`)
     }
 
-    
 }
 
 export default new servicioAficiones();

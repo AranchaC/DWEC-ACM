@@ -4,16 +4,19 @@ import servicioAficiones from '@/servicios/personal/servicioAficiones.js' ;
 import { ref, onMounted, reactive } from 'vue';
 import Swal from "sweetalert2";
 
+/*
 //prueba sweetalert//
 Swal.fire({
   icon: "success",
   title: "Yuhuuuu",
   text: "Holaa"
 })
+*/
 
 let aficiones = ref(null)
 let imagenUrl = ref()
 let filtroNombre = ref()
+let imagen = false;
 
 // variable reactiva que capta los campos del form //
 let nuevaAficion = reactive({
@@ -49,8 +52,8 @@ onMounted(() => {
 
 //funcion detalles, para obtener los detalles de cada nombre //
 function detalles(aficion){
-  console.log("comer croquetas");
   imagenUrl.value=aficion.url;
+  imagen = true;
 };
 
 //** FUNCIÓN DELETE BORRAR **//
@@ -100,9 +103,12 @@ function buscarAficion(){
   servicioAficiones
     .findByNombre(filtroNombre.value)
     .then((res) =>{
-      aficiones.value = res.data;
-      correcto('Afición encontrada.');
-
+      if (res.data.length !== 0){
+        correcto('Afición encontrada.');
+        aficiones.value = res.data;
+      } else {
+        error('No se encontró la afición');     
+      }
     }).catch(()=>{
       error('No se encontró la afición');     
   })
@@ -110,35 +116,6 @@ function buscarAficion(){
 
 //*** FUNCIÓN PUT MODIFICAR AFICIÓN ***//
 function modificarAficion(){
-  /*Swal.fire({
-    title: "¿Quieres guardar los cambios?",
-    showDenyButton: true,
-    showCancelButton: true,
-    confirmButtonText: "Guardar",
-    denyButtonText: "No guardar"
-  }).then((result) => {
-    if (result.isConfirmed) {
-      servicioAficiones
-        .update(modifAficion.id, {
-          nombre: modifAficion.nombre,
-          descripcion: modifAficion.descripcion,
-          url: modifAficion.url
-        })
-        .then((res) => {
-          obtenerAficiones();
-          correcto("¡Afición modificada!");
-          modifAficion.nombre = "";
-          modifAficion.descripcion = "";
-          modifAficion.url = "";
-        })
-        .catch(() => {
-          error("¡Algo salió mal al modificar la afición!");
-        });
-    } else if (result.isDenied) {
-      Swal.fire("Los cambios no se guardaron", "", "info");
-    }
-  });*/
-
   servicioAficiones
     .update(modifAficion.id, {
       nombre: modifAficion.nombre,
@@ -223,7 +200,7 @@ function correcto(mensaje){
         </li>
       </ul>
 
-      <div class="imgCont">
+      <div v-show="imagen != false" class="imgCont">
         <img :src="imagenUrl" />
       </div>
       

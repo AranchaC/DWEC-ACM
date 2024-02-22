@@ -1,7 +1,7 @@
 <script setup>
 
 import Inicio from './components/Inicio.vue'
-import FooterPlantilla from './paginas/Inicio.vue'
+import FooterPlantilla from './componentes/Footer.vue'
 
 </script>
 
@@ -10,9 +10,6 @@ import FooterPlantilla from './paginas/Inicio.vue'
 
     <div class="wrapper">
       <Inicio msg="Página de inicio." />
-      
-
-
     </div>
   </header>
 

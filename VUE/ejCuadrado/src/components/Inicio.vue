@@ -12,12 +12,11 @@ const base = ref('')
 const altura = ref('')
 
 const area = computed(() => base.value * altura.value)
-const perimetro = computed(() => 'Tu perímetro es ${}')
+const perimetro = computed(() => 2*base.value + 2*altura.value)
 
 function limpiar() {
-  largo.value = 0;
-  alto.value = 0;
-  ancho.value = 0;
+  altura.value = 0;
+  base.value = 0;
 }
 
 </script>
@@ -33,11 +32,11 @@ function limpiar() {
     <label for="">Altura: </label>
     <input v-model="altura" >
 <br><br>
-    <button @click="limpiar">Limpiar datos</button>  
+    <button @click="limpiar()">Limpiar datos</button>  
 
     <br><br>
     <p :class="area">Tu área es {{ area }}</p>
-    <p :class="perimetro">{{ perimetro }}</p>
+    <p :class="perimetro">Tu perímetro es {{ perimetro }}</p>
   </div>
 </template>
 

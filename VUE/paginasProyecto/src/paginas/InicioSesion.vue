@@ -2,6 +2,7 @@
 
 import { ref, reactive } from'vue';
 import { useRouter } from "vue-router";
+import Swal from "sweetalert2";
 
 import servicioAficiones from '@/servicios/personal/servicioAficiones.js' ;
 
@@ -10,44 +11,51 @@ let password = ref()
 let usuario = ref()
 
 function acceder(){
-
     if (usuario !== "" && password !== "") {
-
-
     servicioAficiones.findByUsuario(window.btoa(usuario.value+password.value))
         .then((response) => {
-
             if (response.data.length === 0) {
-                alert("el usuario no existe")
+                error("el usuario no existe")
                 localStorage.setItem("usuario", null)
                 console.log(usuario.value)
                 console.log(password.value)
             }
             else {
                 localStorage.setItem("usuario", usuario.value)
-
                 //Recargar Página
                 //Opción 1:  
                 //location.reload();
-
                 //Opción 2: 
                 rutas.go();
-            }
-            // console.log(response.data.length)
-                
-
+            }               
         })
         .catch((error) => {
-            alert("usuario incorrecto")
+            error("usuario incorrecto")
             console.log(error);
             console.log(usuario.value)
             console.log(password.value)
-
         })
     }  
 }
 
+// funciones estilo sweetalert //
+function error(mensaje){
+  Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: mensaje
+    });
+}
 
+function correcto(mensaje){
+  Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: mensaje,
+    showConfirmButton: false,
+    timer: 1500,
+  })
+}
 </script>
 
 <template>

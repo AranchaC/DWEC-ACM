@@ -63,14 +63,28 @@ function limpiarMens() {
   mensajes.ancho = "";
 }
 
-// if (largo.value == 0 || alto.value == 0 || ancho.value == 0){
-//   ok: false;
-// }
+const nombre = ref('');
+const nombreMens = computed(() =>`Hola ${nombre.value}`)
 
+watch(nombre, (nuevoValor, antiguoValor) => {
+  console.log(`Nombre cambiado de ${antiguoValor} a ${nuevoValor}`);
+});
 
-</script>
+function limpiarNombre(){
+  nombre.value = ""
+}
+
+</script> 
 
 <template>
+
+  <div>
+    <input v-model="nombre" placeholder="Ingrese su nombre" />
+    <p>{{ nombreMens }}</p>
+    <button @click=limpiarNombre()>Borrar saludo</button>
+  </div>
+  <br>
+
   <div>
 
     <h2>Cubo:</h2>

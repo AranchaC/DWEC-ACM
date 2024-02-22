@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink} from 'vue-router';
 import { useRouter } from "vue-router";
+import Swal from "sweetalert2";
 import {ref} from "vue";
 
 const props = defineProps({
@@ -10,15 +11,27 @@ const props = defineProps({
 
 let usuario 
 if (localStorage.getItem("usuario") != null){
+    Swal.fire({
+        title: "¡Sesión Iniciada!",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1500,
+    });
     usuario = localStorage.getItem("usuario")
 }
 
 const rutas = useRouter();
 
 function cerrarSesion(){
-    localStorage.removeItem('usuario');
-    location.reload();
-    alert("Has cerrado sesión.")
+    localStorage.removeItem("usuario");
+    Swal.fire({
+        title: "¡Sesión cerrada!",
+        text: "Has cerrado sesión correctamente.",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1500,
+    });
+    location.reload(); // Recargar la página después de cerrar sesión
 }
 
 

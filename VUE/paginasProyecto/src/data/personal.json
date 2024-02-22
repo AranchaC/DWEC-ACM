@@ -1,10 +1,10 @@
 {
   "aficiones": [
     {
-      "id": "1",
       "nombre": "cocinar",
       "descripcion": "croquetas",
-      "url": "src/assets/cocinar.jpg"
+      "url": "src/assets/cocinar.jpg",
+      "id": "1"
     },
     {
       "nombre": "cine",
@@ -53,8 +53,8 @@
       "clave": "ZXZhZXZh"
     },
     {
-      "id": "usuario3",
-      "clave": "clave3"
+      "id": "cliente",
+      "clave": "Y2xpZW50ZWNsaWVudGU="
     }
   ]
 }
