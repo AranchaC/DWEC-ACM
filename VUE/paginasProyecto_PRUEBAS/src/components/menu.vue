@@ -1,25 +1,37 @@
 <script setup>
-import { RouterLink} from 'vue-router';
 import { useRouter } from "vue-router";
-import {ref} from "vue";
-const props = defineProps({
-    "titulo":String,
-    "links":Array,
-})
+import { RouterLink } from "vue-router";
+import Swal from "sweetalert2";
 
-let usuario 
-if (localStorage.getItem("usuario") != null){
-    usuario = localStorage.getItem("usuario")
-}
+const props = defineProps({
+    "titulo": String,
+    "links": Array
+})
 
 const rutas = useRouter();
 
-function cerrarSesion(){
-    localStorage.removeItem('usuario');
-    location.reload();
-    alert("Has cerrado sesión.")
+let usuario 
+if (localStorage.getItem("usuario") != null){
+    Swal.fire({
+        title: "¡Sesión Iniciada!",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 1500,
+    });
+    usuario = localStorage.getItem("usuario")
 }
 
+function cerrarSesion(){
+    localStorage.removeItem("usuario");
+    Swal.fire({
+        title: "¡Sesión cerrada!",
+        text: "Has cerrado sesión correctamente.",
+        icon: "success",
+        showConfirmButton: false,
+        timer: 2500,
+    });
+    rutas.go(); // Recargar la página después de cerrar sesión
+}
 
 </script>
 
@@ -31,11 +43,11 @@ function cerrarSesion(){
     </div>
 
     <nav>
-        <RouterLink
-         v-for="enlace in props.links"
-         :key="enlace"
-         :to="{ name: enlace }">
-           <span class="enlace-menu"> {{ enlace }} </span>
+        <RouterLink 
+            v-for="enlace in props.links"
+            :key="enlace"
+            :to="{ name: enlace }">
+            <span class="enlace-menu"> {{ enlace }} </span>
         </RouterLink>        
     </nav>
 </template>

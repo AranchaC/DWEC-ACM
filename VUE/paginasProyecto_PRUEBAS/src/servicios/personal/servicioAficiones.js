@@ -22,8 +22,8 @@ class servicioAficiones {
         return http.get(`/aficiones?nombre=${nombre}`)
     }
 
-    update(id, data){
-        return http.put(`/aficiones/${id}`,data);
+    update(id, objeto){
+        return http.put(`/aficiones/${id}`, objeto);
     }
 
     getUsuario(clave) {
@@ -34,7 +34,6 @@ class servicioAficiones {
         return http.get(`/usuarios?clave=${clave}`)
     }
 
-    
 }
 
 export default new servicioAficiones();

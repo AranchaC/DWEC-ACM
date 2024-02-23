@@ -3,6 +3,7 @@ import paginaInicio from "@/paginas/PaginaInicio.vue";
 import paginaListar from "@/paginas/PaginaListar.vue";
 import paginaSobreMi from "@/paginas/PaginaSobreMi.vue";
 import inicioSesion from "@/paginas/InicioSesion.vue";
+import Swal from "sweetalert2";
 
 const router = createRouter({
     history: createWebHistory( import.meta.env.BASE_URL),
@@ -21,7 +22,13 @@ const router = createRouter({
                 if (usuario!==null) {
                     next()
                 } else {
-                    next('/usuario')
+                    Swal.fire({
+                        title: "¡Debes iniciar sesión!",
+                        text: "Debes iniciar sesión para acceder a esta página.",
+                        icon: "warning"
+                    }).then(() => {
+                        next('/iniciosesion');
+                    });
                 }
             }
         }, 
@@ -40,19 +47,14 @@ const router = createRouter({
         }, 
         {   path: '/iniciosesion', 
             name:'inicioSesion',
-            component: inicioSesion
-            
+            component: inicioSesion           
         }, 
         //Si se produce un error
         {
             path: '/:pathMatch(.*)*',
             redirect:() => ({ name:'inicio'})
-        }
-        
-    ]
-    
-
+        }       
+    ]    
 });
-
 
 export default router;

@@ -2,13 +2,13 @@
   "aficiones": [
     {
       "nombre": "cine",
-      "descripcion": "ver pelis",
+      "descripcion": "ver pelis de aventuras",
       "url": "src/assets/cine.jpeg",
       "id": "2"
     },
     {
       "nombre": "viajar",
-      "descripcion": "por el mundo",
+      "descripcion": "por todo el mundo",
       "url": "src/assets/viajar.jpeg",
       "id": "3"
     },
@@ -19,16 +19,22 @@
       "id": "5bea"
     },
     {
+      "id": "43b8",
       "nombre": "cocinar",
-      "descripcion": "croquetas con queso",
-      "url": "src/assets/cocinar.jpg",
-      "id": "43b8"
+      "descripcion": "croquetas",
+      "url": "src/assets/cocinar.jpg"
     },
     {
       "nombre": "leer",
-      "descripcion": "harry potter nnn",
+      "descripcion": "harry potter",
       "url": "src/assets/harry.jpg",
       "id": "6bcd"
+    },
+    {
+      "id": "c5c0",
+      "nombre": "deporte",
+      "descripcion": "bailar",
+      "url": "src/assets/bailar.jpg"
     }
   ],
   "usuarios": [

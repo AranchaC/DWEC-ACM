@@ -47,18 +47,14 @@ const router = createRouter({
         }, 
         {   path: '/iniciosesion', 
             name:'inicioSesion',
-            component: inicioSesion
-            
+            component: inicioSesion           
         }, 
         //Si se produce un error
         {
             path: '/:pathMatch(.*)*',
             redirect:() => ({ name:'inicio'})
-        }
-        
-    ]
-    
-
+        }       
+    ]    
 });
 
 export default router;

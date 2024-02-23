@@ -1,8 +1,5 @@
 <script setup>
-
-import barraMenu from './components/menu.vue'
-import { ref } from 'vue'
-
+import barraMenu from '@/components/menu.vue'
 
 </script>
 

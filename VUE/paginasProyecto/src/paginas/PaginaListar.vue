@@ -96,21 +96,24 @@ function limpiar(){
   nuevaAficion.url = "";
 }
 
-//** FUNCIÓN POST AGREGAR **//
 function agregarAficion() {
-  // Enviar los datos de la nueva afición al método post del servicio
-  servicioAficiones
-    .post(nuevaAficion)
-    .then((res) => {
-      // Actualizar la lista de aficiones después de agregar la nueva
-      obtenerAficiones();
-      limpiar();
-      correcto("Afición agregada correctamente.")
-    })
-    .catch(() => {
-      error("Problema al agregar la afición.");
-    });
-}//agregarAfición
+  if (nuevaAficion.nombre !== "" && nuevaAficion.descripcion !== "") {
+    // Enviar los datos de la nueva afición al método post del servicio
+    servicioAficiones
+      .post(nuevaAficion)
+      .then(res => {
+        // Actualizar la lista de aficiones después de agregar la nueva
+        obtenerAficiones();
+        limpiar();
+        correcto("Afición agregada correctamente.")
+      })
+      .catch(() => {
+        error("Problema al agregar la afición.");
+      });
+  } else {
+    error("Rellena los campos");
+  }
+}
 
 //*** FUNCIÓN GET - BUSCAR AFICIÓN POR ID ***//
 function buscarAficion(){
@@ -139,11 +142,10 @@ function modificarAficion(){
     .then((res) =>{
       obtenerAficiones();
       correcto('Afición modificada.');
-
+        modifAficion.id = "";
         modifAficion.nombre = "";
         modifAficion.descripcion = "";
         modifAficion.url = "";
-
     }).catch(()=>{
       error('No se encontró la afición');     
   })
@@ -191,6 +193,7 @@ function correcto(mensaje){
       <br>
       <form class="form" @submit.prevent="modificarAficion">
           <p>Modificar afición:</p>
+          <input type="text" v-model="modifAficion.id" placeholder="Id"/>
           <input type="text" v-model="modifAficion.nombre" placeholder="Nombre"/>
           <input type="text" v-model="modifAficion.descripcion" placeholder="Descripción"/>
           <input type="text" v-model="modifAficion.url" placeholder="URL de la imagen"/>

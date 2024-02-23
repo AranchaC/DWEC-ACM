@@ -4,16 +4,19 @@ import servicioAficiones from '@/servicios/personal/servicioAficiones.js' ;
 import { ref, onMounted, reactive } from 'vue';
 import Swal from "sweetalert2";
 
+/*
 //prueba sweetalert//
 Swal.fire({
   icon: "success",
   title: "Yuhuuuu",
   text: "Holaa"
 })
+*/
 
 let aficiones = ref(null)
 let imagenUrl = ref()
 let filtroNombre = ref()
+let imagen = false;
 
 // variable reactiva que capta los campos del form //
 let nuevaAficion = reactive({
@@ -31,15 +34,12 @@ let modifAficion = reactive({
 
 //** FUNCIÓN GET_ALL OBTENER **//
 function obtenerAficiones() {
-  servicioAficiones
-    .getAll()
-    .then((response) => {
-      console.log(response.data)
-      aficiones.value = response.data;
-    })
-    .catch((error) => {
-      console.log(error);
-    })
+  servicioAficiones.getAll().then(res => {
+    aficiones.value = res.data
+  }) .catch(() => {
+    error("algo salió mal")
+  })
+
 }
 
 // cuando se abre la página, se llama a la función obtnerAficiones //
@@ -49,28 +49,23 @@ onMounted(() => {
 
 //funcion detalles, para obtener los detalles de cada nombre //
 function detalles(aficion){
-  console.log("comer croquetas");
   imagenUrl.value=aficion.url;
+  imagen = true;
 };
 
 //** FUNCIÓN DELETE BORRAR **//
 function borrar(aficion){
-  //función para el click del botón, donde borro toda la fila:
-  if (confirm("¿Quieres borrar esta afición?")){
-    //llamo a función delete del servicio:
-    servicioAficiones
-      .delete(aficion.id)
-      .then((response)=>{
-        let index = aficiones.value.indexOf(aficion);
-        aficiones.value.splice(index,1);
-        correcto("Afición borrada correctamente.")
-        })
-        .catch((error) => {
-          error("Algo ha salido mal.")
-        }) 
-  }
+  servicioAficiones
+    .delete(aficion.id)
+    .then(response => {
+      let index = aficiones.value.indexOf(aficion);
+      aficiones.value.splice(1,index);
+      obtenerAficiones();
+      correcto("Afición borrada.");
+    }) .catch(() => {
+      error("algo ha salido mal")
+    })  
 }//borrar
-
 
 //** FUNCIÓN LIMPIAR campos form **//
 function limpiar(){
@@ -81,28 +76,36 @@ function limpiar(){
 
 //** FUNCIÓN POST AGREGAR **//
 function agregarAficion() {
-  // Enviar los datos de la nueva afición al método post del servicio
-  servicioAficiones
-    .post(nuevaAficion)
-    .then((res) => {
-      // Actualizar la lista de aficiones después de agregar la nueva
-      obtenerAficiones();
-      limpiar();
-      correcto("Afición agregada correctamente.")
-    })
-    .catch(() => {
-      error("Problema al agregar la afición.");
-    });
+  if (nuevaAficion.nombre !== "" && nuevaAficion.descripcion !== "") {
+    // Enviar los datos de la nueva afición al método post del servicio
+    servicioAficiones
+      .post(nuevaAficion)
+      .then(res => {
+        // Actualizar la lista de aficiones después de agregar la nueva
+        obtenerAficiones();
+        limpiar();
+        correcto("Afición agregada correctamente.")
+      })
+      .catch(() => {
+        error("Problema al agregar la afición.");
+      });
+  } else {
+    error("Rellena los campos");
+  }
+
 }//agregarAfición
 
-//*** FUNCIÓN BUSCAR AFICIÓN POR ID ***//
+//*** FUNCIÓN GET - BUSCAR AFICIÓN POR ID ***//
 function buscarAficion(){
   servicioAficiones
     .findByNombre(filtroNombre.value)
     .then((res) =>{
-      aficiones.value = res.data;
-      correcto('Afición encontrada.');
-
+      if (res.data.length !== 0){
+        correcto('Afición encontrada.');
+        aficiones.value = res.data;
+      } else {
+        error('No se encontró la afición');     
+      }
     }).catch(()=>{
       error('No se encontró la afición');     
   })
@@ -119,11 +122,10 @@ function modificarAficion(){
     .then((res) =>{
       obtenerAficiones();
       correcto('Afición modificada.');
-
+        modifAficion.id = "";
         modifAficion.nombre = "";
         modifAficion.descripcion = "";
         modifAficion.url = "";
-
     }).catch(()=>{
       error('No se encontró la afición');     
   })
@@ -171,6 +173,7 @@ function correcto(mensaje){
       <br>
       <form class="form" @submit.prevent="modificarAficion">
           <p>Modificar afición:</p>
+          <input type="text" v-model="modifAficion.id" placeholder="Id"/>
           <input type="text" v-model="modifAficion.nombre" placeholder="Nombre"/>
           <input type="text" v-model="modifAficion.descripcion" placeholder="Descripción"/>
           <input type="text" v-model="modifAficion.url" placeholder="URL de la imagen"/>
@@ -194,7 +197,7 @@ function correcto(mensaje){
         </li>
       </ul>
 
-      <div class="imgCont">
+      <div v-show="imagen != false" class="imgCont">
         <img :src="imagenUrl" />
       </div>
       

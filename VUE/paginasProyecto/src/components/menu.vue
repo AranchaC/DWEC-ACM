@@ -34,7 +34,6 @@ function cerrarSesion(){
     location.reload(); // Recargar la página después de cerrar sesión
 }
 
-
 </script>
 
 <template> 
@@ -45,11 +44,11 @@ function cerrarSesion(){
     </div>
 
     <nav>
-        <RouterLink
-         v-for="enlace in props.links"
-         :key="enlace"
-         :to="{ name: enlace }">
-           <span class="enlace-menu"> {{ enlace }} </span>
+        <RouterLink 
+            v-for="enlace in props.links"
+            :key="enlace"
+            :to="{ name: enlace }">
+            <span class="enlace-menu"> {{ enlace }} </span>
         </RouterLink>        
     </nav>
 </template>
