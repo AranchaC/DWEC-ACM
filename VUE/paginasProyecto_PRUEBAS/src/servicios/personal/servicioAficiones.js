@@ -17,7 +17,7 @@ class servicioAficiones {
     post(aficion) {
         return http.post(`/aficiones`, aficion);
     }
-    
+
     findByNombre(nombre){
         return http.get(`/aficiones?nombre=${nombre}`)
     }
@@ -33,7 +33,6 @@ class servicioAficiones {
     findByUsuario(clave){
         return http.get(`/usuarios?clave=${clave}`)
     }
-
 }
 
 export default new servicioAficiones();

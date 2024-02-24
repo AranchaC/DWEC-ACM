@@ -41,7 +41,7 @@ const router = createRouter({
                 if (usuario!==null) {
                     next()
                 } else {
-                    next('/usuario')
+                    next('/iniciosesion')
                 }
             }
         }, 

@@ -14,7 +14,7 @@ function acceder(){
     if (usuario !== "" && password !== "") {
     servicioAficiones.findByUsuario(window.btoa(usuario.value+password.value))
         .then((response) => {
-            if (usuario.value === "" || password.value === "") {
+            if (response.data.length === 0) {
                 error("el usuario no existe")
                 localStorage.setItem("usuario", null)
                 console.log(usuario.value)
@@ -25,7 +25,9 @@ function acceder(){
                 //Recargar Página
                 //Opción 1:  
                 //location.reload();
-                //Opción 2: 
+                //Opción 2:
+                console.log(usuario.value)
+                console.log(password.value) 
                 rutas.go();
             }               
         })
