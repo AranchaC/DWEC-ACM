@@ -4,6 +4,7 @@ import servicioAficiones from '@/servicios/personal/servicioAficiones.js' ;
 import { ref, onMounted, reactive } from 'vue';
 import Swal from "sweetalert2";
 
+
 /*
 //prueba sweetalert//
 Swal.fire({
@@ -80,6 +81,7 @@ function agregarAficion(){
     servicioAficiones
     .post(nuevaAficion)
     .then((res) => {
+      console.log(res);
       obtenerAficiones()
       limpiar()
       correcto("afición agregada")
@@ -107,29 +109,34 @@ function buscarAficion(){
 
 //*** FUNCIÓN PUT MODIFICAR AFICIÓN ***//
 function modificarAficion(){
-  servicioAficiones
+  if (modifAficion.nombre !== ""){
+    servicioAficiones
     .update(modifAficion.id, {
       nombre: modifAficion.nombre,
       descripcion: modifAficion.descripcion,
       url: modifAficion.url
+    }) .then((res) => {
+      obtenerAficiones()
+      correcto("afición modificada")
+      modifAficion.id =""
+      modifAficion.nombre = ""
+      modifAficion.descripcion =""
+      modifAficion.url = ""
+    }) .catch(() => {
+      error("algo ha fallado")
     })
-    .then((res) =>{
-      obtenerAficiones();
-      correcto('Afición modificada.');
-        modifAficion.id = "";
-        modifAficion.nombre = "";
-        modifAficion.descripcion = "";
-        modifAficion.url = "";
-    }).catch(()=>{
-      error('No se encontró la afición');     
-  })
+  } else {
+    error("vuelca los datos")
+  }
+
 }
 
+//FUNCIÓN VOLCAR DATOS PARA MODIFICAR
 function volcar(aficion){
-  modifAficion.id = aficion.id;
-  modifAficion.nombre = aficion.nombre;
-  modifAficion.descripcion = aficion.descripcion;
-  modifAficion.url = aficion.url;
+  modifAficion.id = aficion.id
+  modifAficion.nombre = aficion.nombre
+  modifAficion.descripcion = aficion.descripcion
+  modifAficion.url = aficion.url
 }
 
 // funciones estilo sweetalert //

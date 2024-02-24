@@ -1,10 +1,10 @@
 {
   "aficiones": [
     {
-      "id": "0940",
       "nombre": "cocinar",
-      "descripcion": "croquetas",
-      "url": ""
+      "descripcion": "croquetas con queso",
+      "url": "",
+      "id": "0940"
     },
     {
       "id": "1c81",
@@ -34,6 +34,12 @@
       "id": "6bca",
       "nombre": "leer",
       "descripcion": "harry potter",
+      "url": ""
+    },
+    {
+      "id": "136a",
+      "nombre": "comer",
+      "descripcion": "chino",
       "url": ""
     }
   ],

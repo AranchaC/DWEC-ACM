@@ -16,7 +16,7 @@ function acceder(){
         .then((response) => {
             if (response.data.length === 0) {
                 error("el usuario no existe")
-                localStorage.setItem("usuario", null)
+                //localStorage.setItem("usuario", null)
                 console.log(usuario.value)
                 console.log(password.value)
             }
