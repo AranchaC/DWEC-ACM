@@ -33,13 +33,13 @@ let modifAficion = reactive({
 })
 
 //** FUNCIÓN GET_ALL OBTENER **//
-function obtenerAficiones(){
-  servicioAficiones 
+function obtenerAficiones() {
+  servicioAficiones
     .getAll()
     .then((res) => {
       aficiones.value = res.data
     }) .catch((err) => {
-      error("algo salió mal")
+      error("algo ha ido mal")
     })
 }
 
@@ -50,22 +50,22 @@ onMounted(() => {
 
 //funcion detalles, para obtener los detalles de cada nombre //
 function detalles(aficion){
-  imagenUrl.value=aficion.url;
-  imagen = true;
-};
+  imagenUrl.value = aficion.url;
+  imagen = true
+}
 
 //** FUNCIÓN DELETE BORRAR **//
 function borrar(aficion){
   servicioAficiones
     .delete(aficion.id)
     .then((res) => {
-      let index = aficiones.value.indexOf(aficion)
+      let index = aficiones.value.indexOf(res)
       aficiones.value.splice(index,1)
       correcto("borrada")
-    }) .catch(() => {
+    }) .catch((err) => {
       error("fallo")
     })
-}//borrar
+}
 
 //** FUNCIÓN LIMPIAR campos form **//
 function limpiar(){
@@ -76,16 +76,16 @@ function limpiar(){
 
 //** FUNCIÓN POST AGREGAR **//
 function agregarAficion(){
-  if ( nuevaAficion.nombre !== "" && nuevaAficion.descripcion !== "" ){
+  if (nuevaAficion.nombre !== "" && nuevaAficion.descripcion !== ""){
     servicioAficiones
-      .post(nuevaAficion)
-      .then((res) => {
-        obtenerAficiones()
-        limpiar()
-        correcto("agragada")
-      }) .catch(() => {
-        error("algo ha fallado")
-      })
+    .post(nuevaAficion)
+    .then((res) => {
+      obtenerAficiones()
+      limpiar()
+      correcto("afición agregada")
+    }) .catch((err) => {
+      error("no se ha podido agregar.")
+    })
   } else {
     error("fallo")
   }
@@ -94,17 +94,15 @@ function agregarAficion(){
 //*** FUNCIÓN GET - BUSCAR AFICIÓN POR ID ***//
 function buscarAficion(){
   servicioAficiones
-    .findByNombre(filtroNombre.value)
-    .then((res) => {
-      if (filtroNombre.value.length != ""){
-        aficiones.value = res.data;
-        correcto("encontrada")
-      } else {
-        error("pon un nombre para buscar")
-      }
-    }) .catch(() => {
+  .findByNombre(filtroNombre.value)
+  .then((res) => {
+    if(res.data.length !== 0){
+      aficiones.value = res.data
+      correcto("encontrada")
+    } else {
       error("no existe")
-    })
+    }
+  })
 }
 
 //*** FUNCIÓN PUT MODIFICAR AFICIÓN ***//
@@ -195,12 +193,10 @@ function correcto(mensaje){
 
       <div v-show="imagen != false" class="imgCont">
         <img :src="imagenUrl" />
-      </div>
-      
+      </div>     
 </template>
 
 <style scoped>
-
 
 .form{
   text-align: center;

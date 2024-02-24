@@ -1,28 +1,40 @@
 {
   "aficiones": [
     {
-      "id": "59b7",
+      "id": "0940",
+      "nombre": "cocinar",
+      "descripcion": "croquetas",
+      "url": ""
+    },
+    {
+      "id": "1c81",
+      "nombre": "música",
+      "descripcion": "rock",
+      "url": ""
+    },
+    {
+      "id": "ce68",
       "nombre": "comer",
       "descripcion": "queso",
       "url": ""
     },
     {
-      "id": "58bb",
-      "nombre": "cine",
-      "descripcion": "ver pelis",
-      "url": "src/assets/cine.jpeg"
+      "id": "5b70",
+      "nombre": "deporte",
+      "descripcion": "bailar",
+      "url": ""
     },
     {
-      "id": "6b95",
-      "nombre": "cocinar",
-      "descripcion": "croquetas",
-      "url": "src/assets/cocinar.jpg"
+      "id": "72d1",
+      "nombre": "viajar",
+      "descripcion": "por todo el mundo",
+      "url": ""
     },
     {
-      "id": "ba94",
-      "nombre": "música",
-      "descripcion": "rock",
-      "url": "src/assets/música.jpeg"
+      "id": "6bca",
+      "nombre": "leer",
+      "descripcion": "harry potter",
+      "url": ""
     }
   ],
   "usuarios": [
