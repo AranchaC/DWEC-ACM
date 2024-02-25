@@ -39,7 +39,7 @@ function obtenerAficiones() {
 
 // cuando se abre la página, se llama a la función obtnerAficiones //
 onMounted(() => {
-
+  obtenerAficiones()
 });
 
 //funcion detalles, para obtener los detalles de cada nombre //
@@ -72,6 +72,7 @@ function borrar(aficion){
                 .then((response)=>{
                   let index = aficiones.value.indexOf(aficion);
                   aficiones.value.splice(index,1);
+                  obtenerAficiones()
                   })
                   .catch((error) => {
                     error("Algo ha salido mal.")
@@ -90,12 +91,36 @@ function limpiar(){
 
 //* FUNCIÓN POST AGREGAR *//
 function agregarAficion() {
-
+  if (nuevaAficion.value !== "" && nuevaAficion.descripcion !== ""){
+    servicioAficiones
+    .post(nuevaAficion)
+    .then((res) => {
+      obtenerAficiones()
+      correcto("afición agregada")
+      limpiar()
+    }) .catch((err) => {
+      error("algo ha ido mal")
+    })
+  } else{
+    error("pon datos")
+  }
 }//agregarAfición
 
 //* FUNCIÓN GET - BUSCAR AFICIÓN POR ID *//
 function buscarAficion(){
- 
+  servicioAficiones
+    .findByNombre(filtroNombre.value)
+    .then((res) => {
+      if (res.data.length !== 0){
+        aficiones.value = res.data
+        correcto("afición encontrada")
+        filtroNombre.value =""
+      } else {
+        error("no existe afición")
+      }
+    }) .catch((err) => {
+      error("fallo")
+    })
 }
 
 //* FUNCIÓN PUT MODIFICAR AFICIÓN *//
@@ -151,7 +176,7 @@ function correcto(mensaje){
   <div>
     <h2>Lista de Aficiones</h2>
 
-    <form class="form">
+    <form class="form" @submit.prevent="agregarAficion()">
       <fieldset>
         <legend>Agregar Nueva Afición:</legend>
         <label>Nombre:</label>
@@ -164,7 +189,7 @@ function correcto(mensaje){
       </fieldset>
     </form>
 
-    <form class="form">
+    <form class="form" @submit.prevent="modificarAficion()">
       <fieldset>
         <legend>Modificar Afición:</legend>
         <label>Nombre:</label>
@@ -177,7 +202,7 @@ function correcto(mensaje){
       </fieldset>
     </form>
 
-    <form class="form">
+    <form class="form" @submit.prevent="buscarAficion()">
       <fieldset>
         <legend>Buscar Afición:</legend>
         <label>Nombre:</label>
@@ -239,12 +264,7 @@ legend {
 label {
   display: block;
   margin-bottom: 5px;
-}let modifAficion = reactive({
-  id: null,
-  nombre:"",
-  descripcion:"",
-  url:""
-})
+}
 
 input,
 textarea {

@@ -1,7 +1,7 @@
 {
   "aficiones": [
     {
-      "nombre": "Manga",
+      "nombre": "Mangaaaa",
       "descripcion": "Me encanta leer manga siempre",
       "url": "src/assets/imagenes/anime.jpg",
       "id": "3"
@@ -19,28 +19,16 @@
       "id": "5"
     },
     {
-      "id": "6",
-      "nombre": "Lectura",
-      "descripcion": "Me gusta leer diferentes estilos y perderme por mundos imaginarios.",
-      "url": "src/assets/imagenes/libros.jpg"
-    },
-    {
       "id": "ea05",
       "nombre": "Naturaleza",
       "descripcion": "Me gusta conocer del medio natural.",
       "url": "src/assets/imagenes/naturaleza.jpg"
     },
     {
-      "id": "6",
-      "nombre": "Arte",
-      "descripcion": "Me gusta saber sobre el mundo del arte y su historia.",
-      "url": "src/assets/imagenes/arte.jpg"
-    },
-    {
-      "id": "9fc0",
-      "nombre": "pepito",
-      "descripcion": "pepito mola mucho",
-      "url": "xxxx.com"
+      "id": "eb44",
+      "nombre": "comer",
+      "descripcion": "croquetas",
+      "url": ""
     }
   ],
   "usuarios": [

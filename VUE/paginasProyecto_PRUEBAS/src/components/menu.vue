@@ -1,8 +1,6 @@
 <script setup>
 import { useRouter } from "vue-router";
 import { RouterLink } from "vue-router";
-import Swal from "sweetalert2";
-import { rewriteDefaultAST } from "vue/compiler-sfc";
 
 const props = defineProps({
     "titulo": String,
@@ -21,8 +19,6 @@ function cerrarSesion(){
     localStorage.removeItem("usuario")
     rutas.go()
 }
-
-
 
 </script>
 

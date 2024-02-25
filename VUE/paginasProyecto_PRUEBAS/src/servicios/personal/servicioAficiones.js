@@ -26,10 +26,6 @@ class servicioAficiones {
         return http.put(`/aficiones/${id}`, objeto);
     }
 
-    getUsuario(clave) {
-        return http.get(`/usuarios/${clave}`);
-    }
-
     findByUsuario(clave){
         return http.get(`/usuarios?clave=${clave}`)
     }

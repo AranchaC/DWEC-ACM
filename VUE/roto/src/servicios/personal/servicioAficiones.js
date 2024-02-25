@@ -1,10 +1,13 @@
-import htttp from "./http-axios";
+import httpAxios from "./http-axios";
+import http from "./http-axios";
 
 class serviciosAficiones {
 
     /**Peticiones a aficones */
     
-
+    getAll(){
+        return http.get(`/aficiones`)
+    }
     get(id){
         return http.get(`/aficiones/${id}`)
     }
@@ -12,13 +15,17 @@ class serviciosAficiones {
         return http.create(`/aficiones?nombre=${data}`)
     }
 
-    
+    delete(id){
+        return http.delete(`/aficiones/${id}`)
+    }
 
     post(nuevaAficion){
         return http.post("/aficiones", nuevaAficion);
     }
 
-    
+    findByNombre(nombre){
+        return http.get(`aficiones?nombre=${nombre}`)
+    }
     
 
     update(id, data){

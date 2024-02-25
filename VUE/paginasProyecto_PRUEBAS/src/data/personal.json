@@ -1,18 +1,6 @@
 {
   "aficiones": [
     {
-      "nombre": "música",
-      "descripcion": "rock duro",
-      "url": "src/assets/múscia.jpeg",
-      "id": "1c81"
-    },
-    {
-      "nombre": "leer",
-      "descripcion": "harry potter",
-      "url": "src/assets/harry.jpg",
-      "id": "6bca"
-    },
-    {
       "id": "d56f",
       "nombre": "cocinar",
       "descripcion": "croquetas",
@@ -29,6 +17,18 @@
       "nombre": "cine",
       "descripcion": "pelis de aventuras",
       "url": "src/assets/cine.jpeg"
+    },
+    {
+      "id": "21b1",
+      "nombre": "comer",
+      "descripcion": "quesoo",
+      "url": ""
+    },
+    {
+      "id": "424d",
+      "nombre": "comer",
+      "descripcion": "pizza",
+      "url": ""
     }
   ],
   "usuarios": [

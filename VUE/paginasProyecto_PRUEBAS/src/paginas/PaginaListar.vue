@@ -5,15 +5,6 @@ import { ref, onMounted, reactive } from 'vue';
 import Swal from "sweetalert2";
 import { useRouter } from 'vue-router';
 
-/*
-//prueba sweetalert//
-Swal.fire({
-  icon: "success",
-  title: "Yuhuuuu",
-  text: "Holaa"
-})
-*/
-
 let aficiones = ref(null)
 let imagenUrl = ref()
 let filtroNombre = ref()
@@ -40,9 +31,8 @@ function obtenerAficiones(){
   servicioAficiones
     .getAll()
     .then((res) => {
-      aficiones.value = res.data
+      aficiones.value = res.data;
     }) .catch((err) => {
-      console.error(err);
       error("algo ha ido mal")
     })
 }
@@ -62,13 +52,10 @@ function borrar(aficion){
   servicioAficiones
     .delete(aficion.id)
     .then((res) => {
-      let index = aficiones.value.indexOf(res)
-      aficiones.value.splice(index,1)
-      correcto("borrada")
-      rutas.go()
+      correcto("afición borrada")
+      obtenerAficiones()
     }) .catch((err) => {
-      console.error(err);
-      error("ha fallado")
+      error("fallo")
     })
 }
 
@@ -81,19 +68,16 @@ function limpiar(){
 
 //** FUNCIÓN POST AGREGAR **//
 function agregarAficion(){
-  if (nuevaAficion.nombre !== "" && nuevaAficion.descripcion !== ""){
+  if(nuevaAficion.nombre !== "" & nuevaAficion.descripcion !== ""){
     servicioAficiones
       .post(nuevaAficion)
       .then((res) => {
         obtenerAficiones()
+        correcto("afición añadida")
         limpiar()
-        correcto("afición agregada")
       }) .catch((err) => {
-        console.error(err);
-        error("no se ha podido añadir")
+        error("falloo")
       })
-  } else {
-    error("Pon datos")
   }
 }
 
@@ -102,14 +86,13 @@ function buscarAficion(){
   servicioAficiones
     .findByNombre(filtroNombre.value)
     .then((res) => {
-      if (res.data.length !== 0){
+      if (res.data.length !==0 ){
         aficiones.value = res.data
+        filtroNombre.value = ""
+        correcto("afición encontrada")
       } else {
-        error("no existe la afición")
-      }
-      filtroNombre.value = ""
-    }) .catch((err) => {
-      error("fallooo")
+        error("no existe")
+      }     
     })
 }
 
@@ -120,16 +103,11 @@ function modificarAficion(){
       nombre: modifAficion.nombre,
       descripcion: modifAficion.descripcion,
       url: modifAficion.url
-    })
-    .then((res) => {
+    }) .then((res) => {
       obtenerAficiones()
-      correcto("afición modificada")
-      modifAficion.id = ""
-      modifAficion.nombre = ""
-      modifAficion.descripcion = ""
-      modifAficion.url = ""
+      correcto("modificada")
     }) .catch((err) => {
-      error("ha fallado")
+      error("falloo")
     })
 }
 

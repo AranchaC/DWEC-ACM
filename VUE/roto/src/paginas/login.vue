@@ -5,7 +5,8 @@ import Swal from "sweetalert2"
 import servicioAficiones from '@/servicios/personal/servicioAficiones';
 
 /**Variables */
-
+let usuario = ref()
+const rutas = useRouter()
 // funciones estilo sweetalert //
 function error(mensaje){
   Swal.fire({
@@ -27,18 +28,20 @@ function correcto(mensaje){
 
 function acceder(){
     if(usuario.value!="" && password.value!=""){
-    servicioPerdedores.findByUsuario(window.btoa(usuario.value+password.value))
+    servicioAficiones.findByUsuario(window.btoa(usuario.value+password.value))
     .then((res)=>{
-        if(res.data.legth===0){
+        if(res.data.length===0){
             error("el usuario no existe")
-            localStorage.setItem("usuario",null)
+            //localStorage.setItem("usuario",null)
         }else{
             localStorage.setItem("usuario",usuario.value)
             rutas.go();
+            correcto("has iniciado sesión")
         }
     })
-    .catch((error)=>{
-
+    .catch((er)=>{
+      error("algo ha salido mal")
+      console.error(er);
     })
     } 
 
@@ -57,7 +60,7 @@ function acceder(){
         <label for="password">Contraseña</label>
         <input v-model="password" type="password" id="password" name="password" >
     </div>
-
+    <button>Inicar sesión</button>
    
 </form>
 </template>

@@ -5,8 +5,8 @@ import Swal from "sweetalert2";
 import { ref } from 'vue';
 
 const props = defineProps({
-  titulo: String,
-  links: Array,
+  "titulo": String,
+  "links": Array,
 });
 
 let usuario;
@@ -14,7 +14,6 @@ if(localStorage.getItem("usuario")!=null){
   console.log("alerta de sesion iniciada")
   usuario= localStorage.getItem("usuario")
 }
-
 
 const rutas = useRouter();
 
