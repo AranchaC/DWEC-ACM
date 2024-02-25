@@ -3,7 +3,7 @@
 import servicioAficiones from '@/servicios/personal/servicioAficiones.js' ;
 import { ref, onMounted, reactive } from 'vue';
 import Swal from "sweetalert2";
-
+import { useRouter } from 'vue-router';
 
 /*
 //prueba sweetalert//
@@ -18,6 +18,8 @@ let aficiones = ref(null)
 let imagenUrl = ref()
 let filtroNombre = ref()
 let imagen = false;
+
+const rutas = useRouter();
 
 // variable reactiva que capta los campos del form //
 let nuevaAficion = reactive({
@@ -34,12 +36,13 @@ let modifAficion = reactive({
 })
 
 //** FUNCIÓN GET_ALL OBTENER **//
-function obtenerAficiones() {
+function obtenerAficiones(){
   servicioAficiones
     .getAll()
     .then((res) => {
       aficiones.value = res.data
     }) .catch((err) => {
+      console.error(err);
       error("algo ha ido mal")
     })
 }
@@ -51,10 +54,9 @@ onMounted(() => {
 
 //funcion detalles, para obtener los detalles de cada nombre //
 function detalles(aficion){
-  imagenUrl.value = aficion.url;
-  imagen = true
+  imagen = true;
+  imagenUrl.value = aficion.url
 }
-
 //** FUNCIÓN DELETE BORRAR **//
 function borrar(aficion){
   servicioAficiones
@@ -63,8 +65,10 @@ function borrar(aficion){
       let index = aficiones.value.indexOf(res)
       aficiones.value.splice(index,1)
       correcto("borrada")
+      rutas.go()
     }) .catch((err) => {
-      error("fallo")
+      console.error(err);
+      error("ha fallado")
     })
 }
 
@@ -79,56 +83,54 @@ function limpiar(){
 function agregarAficion(){
   if (nuevaAficion.nombre !== "" && nuevaAficion.descripcion !== ""){
     servicioAficiones
-    .post(nuevaAficion)
-    .then((res) => {
-      console.log(res);
-      obtenerAficiones()
-      limpiar()
-      correcto("afición agregada")
-    }) .catch((err) => {
-      error("no se ha podido agregar.")
-    })
+      .post(nuevaAficion)
+      .then((res) => {
+        obtenerAficiones()
+        limpiar()
+        correcto("afición agregada")
+      }) .catch((err) => {
+        console.error(err);
+        error("no se ha podido añadir")
+      })
   } else {
-    error("fallo")
+    error("Pon datos")
   }
 }
 
 //*** FUNCIÓN GET - BUSCAR AFICIÓN POR ID ***//
 function buscarAficion(){
   servicioAficiones
-  .findByNombre(filtroNombre.value)
-  .then((res) => {
-    if(res.data.length !== 0){
-      aficiones.value = res.data
-      correcto("encontrada")
-    } else {
-      error("no existe")
-    }
-  })
+    .findByNombre(filtroNombre.value)
+    .then((res) => {
+      if (res.data.length !== 0){
+        aficiones.value = res.data
+      } else {
+        error("no existe la afición")
+      }
+      filtroNombre.value = ""
+    }) .catch((err) => {
+      error("fallooo")
+    })
 }
 
 //*** FUNCIÓN PUT MODIFICAR AFICIÓN ***//
 function modificarAficion(){
-  if (modifAficion.nombre !== ""){
-    servicioAficiones
+  servicioAficiones
     .update(modifAficion.id, {
       nombre: modifAficion.nombre,
       descripcion: modifAficion.descripcion,
       url: modifAficion.url
-    }) .then((res) => {
+    })
+    .then((res) => {
       obtenerAficiones()
       correcto("afición modificada")
-      modifAficion.id =""
+      modifAficion.id = ""
       modifAficion.nombre = ""
-      modifAficion.descripcion =""
+      modifAficion.descripcion = ""
       modifAficion.url = ""
-    }) .catch(() => {
-      error("algo ha fallado")
+    }) .catch((err) => {
+      error("ha fallado")
     })
-  } else {
-    error("vuelca los datos")
-  }
-
 }
 
 //FUNCIÓN VOLCAR DATOS PARA MODIFICAR

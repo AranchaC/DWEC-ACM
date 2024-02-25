@@ -1,0 +1,23 @@
+{
+  "asistentes": [
+    {
+      "id": 1,
+      "nombre": "Agustin Aguilera",
+      "descripcion": "Docente, Profesor DWEC",      
+      "imagen": "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/v1448909339/owy8vzc7yerywuljcna0.jpg"
+      
+    },
+    {
+      "id": 2,
+      "nombre": "Javier Puche",
+      "descripcion": "Docente, Profesor DWES",      
+      "imagen": "http://3.bp.blogspot.com/-ceknqzvBoWw/To3VgwSFWMI/AAAAAAAAAVg/4YkhVYfEAIU/s1600/steve.jpg"      
+    },
+    {
+      "id": 3,
+      "nombre": "Luis",
+      "descripcion": "Docentes, Profesor DAW",      
+      "imagen": "https://podcasts.podinstall.com/assets/img/rs/256/6c00da938a1a6861d2822ab5165b3a69c900ee1b/c2a1c9acd2fc1bcc4a2bb84e2e0fa1783ffae148.png"      
+    }
+  ]
+}

@@ -2,36 +2,27 @@
 import { useRouter } from "vue-router";
 import { RouterLink } from "vue-router";
 import Swal from "sweetalert2";
+import { rewriteDefaultAST } from "vue/compiler-sfc";
 
 const props = defineProps({
     "titulo": String,
     "links": Array
 })
 
-const rutas = useRouter();
+const rutas = useRouter()
 
-let usuario 
-if (localStorage.getItem("usuario") != null){
-    Swal.fire({
-        title: "¡Sesión Iniciada!",
-        icon: "success",
-        showConfirmButton: false,
-        timer: 1500,
-    });
+let usuario
+if (localStorage.getItem("usuario") !== null){
     usuario = localStorage.getItem("usuario")
 }
 
+//función cerrar sesión:
 function cerrarSesion(){
-    localStorage.removeItem("usuario");
-    Swal.fire({
-        title: "¡Sesión cerrada!",
-        text: "Has cerrado sesión correctamente.",
-        icon: "success",
-        showConfirmButton: false,
-        timer: 2500,
-    });
-    rutas.go(); // Recargar la página después de cerrar sesión
+    localStorage.removeItem("usuario")
+    rutas.go()
 }
+
+
 
 </script>
 
@@ -44,10 +35,10 @@ function cerrarSesion(){
 
     <nav>
         <RouterLink 
-            v-for="enlace in props.links"
-            :key="enlace"
-            :to="{ name: enlace }">
-            <span class="enlace-menu"> {{ enlace }} </span>
+        v-for="enlace in props.links" 
+        :key="enlace" 
+        :to="{name:enlace}"> 
+        <span class="enlace-menu"> {{ enlace }} </span>
         </RouterLink>        
     </nav>
 </template>

@@ -10,34 +10,23 @@ const rutas = useRouter();
 let password = ref()
 let usuario = ref()
 
+//función acceder - inicio sesión
 function acceder(){
-    if (usuario !== "" && password !== "") {
-    servicioAficiones.findByUsuario(window.btoa(usuario.value+password.value))
-        .then((response) => {
-            if (response.data.length === 0) {
-                error("el usuario no existe")
-                //localStorage.setItem("usuario", null)
-                console.log(usuario.value)
-                console.log(password.value)
-            }
-            else {
-                localStorage.setItem("usuario", usuario.value)
-                //Recargar Página
-                //Opción 1:  
-                //location.reload();
-                //Opción 2:
-                console.log(usuario.value)
-                console.log(password.value) 
-                rutas.go();
-            }               
-        })
-        .catch((error) => {
-            error("usuario incorrecto")
-            console.log(error);
-            console.log(usuario.value)
-            console.log(password.value)
-        })
-    } 
+    if (usuario.value !== "" && password.value !== ""){
+        servicioAficiones
+            .findByUsuario(window.btoa(usuario.value+password.value))
+            .then((res) => {
+                if(res.data.length !== 0){
+                    localStorage.setItem("usuario", usuario.value)
+                    rutas.go()
+                    correcto("has iniciado sesión")
+                } else {
+                    error("usuario o contraseña incorrecto")
+                }
+            }) .catch((err) => {
+                error("fallo")
+            })
+    }
 }
 
 // funciones estilo sweetalert //
@@ -53,9 +42,7 @@ function correcto(mensaje){
   Swal.fire({
     position: 'center',
     icon: 'success',
-    title: mensaje,
-    showConfirmButton: false,
-    timer: 1500,
+    title: mensaje
   })
 }
 </script>

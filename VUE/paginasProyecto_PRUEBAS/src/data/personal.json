@@ -1,46 +1,34 @@
 {
   "aficiones": [
     {
-      "nombre": "cocinar",
-      "descripcion": "croquetas con queso",
-      "url": "",
-      "id": "0940"
-    },
-    {
-      "id": "1c81",
       "nombre": "música",
-      "descripcion": "rock",
-      "url": ""
+      "descripcion": "rock duro",
+      "url": "src/assets/múscia.jpeg",
+      "id": "1c81"
     },
     {
-      "id": "ce68",
-      "nombre": "comer",
-      "descripcion": "queso",
-      "url": ""
-    },
-    {
-      "id": "5b70",
-      "nombre": "deporte",
-      "descripcion": "bailar",
-      "url": ""
-    },
-    {
-      "id": "72d1",
-      "nombre": "viajar",
-      "descripcion": "por todo el mundo",
-      "url": ""
-    },
-    {
-      "id": "6bca",
       "nombre": "leer",
       "descripcion": "harry potter",
-      "url": ""
+      "url": "src/assets/harry.jpg",
+      "id": "6bca"
     },
     {
-      "id": "136a",
-      "nombre": "comer",
-      "descripcion": "chino",
-      "url": ""
+      "id": "d56f",
+      "nombre": "cocinar",
+      "descripcion": "croquetas",
+      "url": "src/assets/cocinar.jpg"
+    },
+    {
+      "id": "95c5",
+      "nombre": "viajar",
+      "descripcion": "montaña",
+      "url": "src/assets/montaña.jpg"
+    },
+    {
+      "id": "4660",
+      "nombre": "cine",
+      "descripcion": "pelis de aventuras",
+      "url": "src/assets/cine.jpeg"
     }
   ],
   "usuarios": [

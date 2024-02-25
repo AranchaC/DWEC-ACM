@@ -1,0 +1,28 @@
+{
+    "aficiones": [
+      {
+        "id": "2",
+        "nombre": "Anime",
+        "descripcion": "Disfruto de las animaciones japonesas que ofrecen historias emocionantes, personajes únicos y estilos artísticos fascinantes.",
+        "url": "src/assets/imagenes/anime.jpg"
+      },
+      {
+        "id": "3",
+        "nombre": "Manga",
+        "descripcion": "Me encanta leer manga",
+        "url": "src/assets/imagenes/manga.jpg"
+      },
+      {
+        "id": "4",
+        "nombre": "Música",
+        "descripcion": "La música es mi pasión; me gusta explorar diferentes géneros, descubrir nuevos artistas y sumergirme en las emociones que la música puede transmitir.",
+        "url": "src/assets/imagenes/musica.jpg"
+      },
+      {
+        "id": "5",
+        "nombre": "Filosofía",
+        "descripcion": "Explorar las ideas filosóficas me ayuda a reflexionar sobre la vida, la existencia y la naturaleza de la realidad, ampliando mi comprensión del mundo.",
+        "url": "src/assets/imagenes/filosofia.jpg"
+      }
+    ]
+  }

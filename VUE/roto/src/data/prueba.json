@@ -1,0 +1,64 @@
+{
+  "aficiones": [
+    {
+      "nombre": "Manga",
+      "descripcion": "Me encanta leer manga siempre",
+      "url": "src/assets/imagenes/anime.jpg",
+      "id": "3"
+    },
+    {
+      "nombre": "Música",
+      "descripcion": "La música es mi pasión.",
+      "url": "src/assets/imagenes/musica.jpg",
+      "id": "4"
+    },
+    {
+      "nombre": "Filosofíaa",
+      "descripcion": "Explorar las ideas filosóficas me ayuda a reflexionar sobre la vidaaa",
+      "url": "src/assets/imagenes/filosofia.jpg",
+      "id": "5"
+    },
+    {
+      "id": "6",
+      "nombre": "Lectura",
+      "descripcion": "Me gusta leer diferentes estilos y perderme por mundos imaginarios.",
+      "url": "src/assets/imagenes/libros.jpg"
+    },
+    {
+      "id": "ea05",
+      "nombre": "Naturaleza",
+      "descripcion": "Me gusta conocer del medio natural.",
+      "url": "src/assets/imagenes/naturaleza.jpg"
+    },
+    {
+      "id": "6",
+      "nombre": "Arte",
+      "descripcion": "Me gusta saber sobre el mundo del arte y su historia.",
+      "url": "src/assets/imagenes/arte.jpg"
+    },
+    {
+      "id": "9fc0",
+      "nombre": "pepito",
+      "descripcion": "pepito mola mucho",
+      "url": "xxxx.com"
+    }
+  ],
+  "usuarios": [
+    {
+      "id": "arancha",
+      "clave": "YXJhbmNoYWFyYW5jaGE="
+    },
+    {
+      "id": "eva",
+      "clave": "ZXZhZXZh"
+    },
+    {
+      "id": "cliente",
+      "clave": "Y2xpZW50ZWNsaWVudGU="
+    },
+    {
+      "id": "zeta",
+      "clave": "emV0YXpldGE="
+    }
+  ]
+}
