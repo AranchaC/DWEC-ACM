@@ -1,0 +1,40 @@
+{
+  "aficiones": [
+    {
+      "id": "1",
+      "nombre": "Fotografía",
+      "descripcion": " Captura momentos en imágenes. ",
+      "urlimg": "src/assets/img/aficiones/fotografia.jpg"
+    },
+    {
+      "id": "2",
+      "nombre": "Cocina",
+      "descripcion": "Experimenta sabores y crea platos.",
+      "urlimg": "src/assets/img/aficiones/cocina.jpg"
+    },
+    {
+      "id": "3",
+      "nombre": "Senderismo",
+      "descripcion": "Explora la naturaleza caminando senderos.",
+      "urlimg": "src/assets/img/aficiones/senderimos.jpeg"
+    },
+    {
+      "id": "4",
+      "nombre": "Jardinería",
+      "descripcion": "Regadío y siembra de plantas",
+      "urlimg": "src/assets/img/aficiones/jardineria.jpg"
+    }
+  ],
+  "usuarios": [
+    {
+      "nombre": "arancha",
+      "clave": "YXJhbmNoYWFyYW5jaGE="
+    },
+    {
+      "clave": "ZXZhZXZh"
+    },
+    {
+      "clave": ""
+    }
+  ]
+}
